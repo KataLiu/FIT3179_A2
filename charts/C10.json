@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Aussie Bird Count participation, 2023–2025",
+    "subtitle": "National participant totals, confirmed directly against BirdLife Australia's official results.",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63"
+  },
+  "width": 300,
+  "height": 220,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C10_C11_AussieBirdCount_Confirmed_2023_2025.csv",
+    "format": {"type": "csv", "parse": {"year": "number", "participants": "number"}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 3, "color": "#3E7856"},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": null},
+        "y": {"datum": 0, "type": "quantitative"},
+        "y2": {"field": "participants"}
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 220, "color": "#3E7856"},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "title": null},
+        "y": {"field": "participants", "type": "quantitative", "title": "Participants", "axis": {"format": "~s"}}
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": -16, "fontSize": 12, "fontWeight": "bold", "color": "#34443A"},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "participants", "type": "quantitative"},
+        "text": {"field": "participant_label"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#FFFEF8",
+    "font": "Arial",
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#E3E8E2", "domain": false}
+  }
+}

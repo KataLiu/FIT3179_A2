@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Reporting activity reshapes Australia, 2024",
+    "subtitle": [
+      "Geographic areas replaced by circles (Dorling cartogram); positions are approximate.",
+      "Circle area = total records; colour = Birdata's share of those records."
+    ],
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63"
+  },
+  "width": 380,
+  "height": 320,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C12_DorlingCartogram_2024.csv",
+    "format": {"type": "csv", "parse": {"dorling_x": "number", "dorling_y": "number", "total_records": "number", "birdata_share": "number"}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "circle", "opacity": 0.9, "stroke": "#5F6B63", "strokeWidth": 0.5},
+      "encoding": {
+        "x": {"field": "dorling_x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y": {"field": "dorling_y", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "size": {
+          "field": "total_records",
+          "type": "quantitative",
+          "title": "Total records",
+          "scale": {"type": "sqrt", "range": [200, 5500]},
+          "legend": {"format": ",.0f"}
+        },
+        "color": {
+          "field": "birdata_share",
+          "type": "quantitative",
+          "title": "Birdata share",
+          "scale": {"scheme": "oranges"},
+          "legend": {"format": ".0%"}
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "total_records", "type": "quantitative", "title": "Total records", "format": ","},
+          {"field": "birdata_share", "type": "quantitative", "title": "Birdata share", "format": ".1%"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#FFFEF8"},
+      "encoding": {
+        "x": {"field": "dorling_x", "type": "quantitative", "scale": {"domain": [0, 100]}},
+        "y": {"field": "dorling_y", "type": "quantitative", "scale": {"domain": [0, 100]}},
+        "text": {"field": "state_code"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#FFFEF8",
+    "font": "Arial",
+    "view": {"stroke": null}
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Which bird groups dominate the samples?",
+    "subtitle": [
+      "Passerines account for more than half of the 5,120 records in the matched samples.",
+      "Area represents each bird group's share of sampled citizen-science records."
+    ],
+    "anchor": "start",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63",
+    "offset": 16
+  },
+  "width": 700,
+  "height": 380,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C05_TaxonomicComposition_Treemap.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "record_count": "number",
+        "record_share": "number",
+        "x0": "number",
+        "x1": "number",
+        "y0": "number",
+        "y1": "number",
+        "sample_total": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "(datum.x0 + datum.x1) / 2",
+      "as": "x_center"
+    },
+    {
+      "calculate": "(datum.y0 + datum.y1) / 2",
+      "as": "y_center"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#FFFEF8",
+        "strokeWidth": 5,
+        "cornerRadius": 5
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x1"
+        },
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y1"
+        },
+        "color": {
+          "field": "bird_group",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Passerines",
+              "Parrots",
+              "Waterbirds",
+              "Raptors",
+              "Other"
+            ],
+            "range": [
+              "#79A984",
+              "#E8C66A",
+              "#83B4CF",
+              "#D98B68",
+              "#A994BF"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "bird_group",
+            "type": "nominal",
+            "title": "Bird group"
+          },
+          {
+            "field": "record_count",
+            "type": "quantitative",
+            "title": "Sample records",
+            "format": ","
+          },
+          {
+            "field": "record_share",
+            "type": "quantitative",
+            "title": "Share of sample",
+            "format": ".1%"
+          },
+          {
+            "field": "sample_total",
+            "type": "quantitative",
+            "title": "Total sample",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "color": "#26372E",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "field": "x_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "bird_group"
+        },
+        "size": {
+          "condition": [
+            {
+              "test": "datum.bird_group === 'Passerines'",
+              "value": 20
+            },
+            {
+              "test": "datum.bird_group === 'Waterbirds'",
+              "value": 17
+            },
+            {
+              "test": "datum.bird_group === 'Raptors'",
+              "value": 11
+            }
+          ],
+          "value": 14
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": 24,
+        "color": "#26372E",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "field": "x_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "record_share",
+          "type": "quantitative",
+          "format": ".1%"
+        },
+        "size": {
+          "condition": {
+            "test": "datum.bird_group === 'Raptors'",
+            "value": 10
+          },
+          "value": 13
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#FFFEF8",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    }
+  }
+}

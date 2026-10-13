@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Which community shapes each state? Birdata share by state, 2024",
+    "subtitle": "Darker orange = a larger share of that state's combined records came from Birdata rather than eBird.",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63"
+  },
+  "width": 420,
+  "height": 340,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/Australia_States_ASGS2021_Simplified.topojson",
+    "format": {"type": "topojson", "feature": "australia_states"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.state",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+          "format": {"type": "csv", "parse": {"birdata_share": "number"}}
+        },
+        "key": "state",
+        "fields": ["birdata_share", "year"]
+      }
+    },
+    {"filter": "datum.year == 2024"}
+  ],
+  "mark": {"type": "geoshape", "stroke": "#FFFFFF", "strokeWidth": 1},
+  "encoding": {
+    "color": {
+      "field": "birdata_share",
+      "type": "quantitative",
+      "title": "Birdata share",
+      "scale": {"scheme": "oranges"},
+      "legend": {"format": ".0%"}
+    },
+    "tooltip": [
+      {"field": "properties.state", "type": "nominal", "title": "State"},
+      {"field": "birdata_share", "type": "quantitative", "title": "Birdata share", "format": ".1%"}
+    ]
+  },
+  "config": {
+    "background": "#FFFEF8",
+    "font": "Arial",
+    "view": {"stroke": null}
+  }
+}

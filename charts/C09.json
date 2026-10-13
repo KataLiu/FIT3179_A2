@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Changing state ranks, 2018–2024",
+    "subtitle": "Rank by total combined records each year (1 = most records); South Australia climbed from 7th–8th to 5th by 2022.",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63"
+  },
+  "width": 380,
+  "height": 260,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+    "format": {"type": "csv", "parse": {"year": "number", "record_rank": "number"}}
+  },
+  "transform": [
+    {"filter": "indexof(['QLD','NSW','VIC','WA','SA'], datum.state_code) >= 0"}
+  ],
+  "mark": {"type": "line", "point": {"filled": true, "size": 55}, "strokeWidth": 2.5},
+  "encoding": {
+    "x": {"field": "year", "type": "ordinal", "title": null},
+    "y": {
+      "field": "record_rank",
+      "type": "quantitative",
+      "title": "Rank (out of 8 states/territories)",
+      "scale": {"domain": [1, 8], "reverse": true},
+      "axis": {"tickMinStep": 1}
+    },
+    "color": {
+      "field": "state_code",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": ["QLD", "NSW", "VIC", "WA", "SA"],
+        "range": ["#3E7856", "#3B6FA0", "#E49A3A", "#D9B44A", "#8F7CA8"]
+      },
+      "legend": {"orient": "right"}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "record_rank", "type": "quantitative", "title": "Rank"}
+    ]
+  },
+  "config": {
+    "background": "#FFFEF8",
+    "font": "Arial",
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#E3E8E2", "domain": false}
+  }
+}

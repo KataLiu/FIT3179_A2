@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "When are birdwatchers most active? Monthly share of records",
+    "subtitle": "Average monthly share of each source's annual records, 2018–2024.",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63"
+  },
+  "width": 380,
+  "height": 260,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C03_C08_MonthlyRecords_2018_2024.csv",
+    "format": {"type": "csv", "parse": {"month": "number", "share_of_source_year": "number"}}
+  },
+  "transform": [
+    {"aggregate": [{"op": "mean", "field": "share_of_source_year", "as": "avg_share"}], "groupby": ["source", "month", "month_name"]}
+  ],
+  "mark": {"type": "line", "point": {"filled": true, "size": 45}, "strokeWidth": 2.5},
+  "encoding": {
+    "x": {
+      "field": "month_name",
+      "type": "ordinal",
+      "sort": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+      "title": null,
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "avg_share",
+      "type": "quantitative",
+      "title": "Share of records",
+      "axis": {"format": ".0%"}
+    },
+    "color": {
+      "field": "source",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": ["eBird Australia", "BirdLife Birdata"],
+        "range": ["#3E7856", "#E49A3A"]
+      },
+      "legend": {"orient": "top", "direction": "horizontal"}
+    },
+    "tooltip": [
+      {"field": "source", "type": "nominal", "title": "Source"},
+      {"field": "month_name", "type": "nominal", "title": "Month"},
+      {"field": "avg_share", "type": "quantitative", "title": "Avg. share", "format": ".1%"}
+    ]
+  },
+  "config": {
+    "background": "#FFFEF8",
+    "font": "Arial",
+    "view": {"stroke": null},
+    "axis": {"gridColor": "#E3E8E2", "domain": false}
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Composition by source",
+    "subtitle": "Same year-by-state sampling structure; left = eBird Australia, right = Birdata.",
+    "anchor": "start",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63"
+  },
+  "width": 420,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C06_CompositionBySource_Mosaic.csv",
+    "format": {"type": "csv", "parse": {"x0": "number", "x1": "number", "y0": "number", "y1": "number", "share_within_source": "number"}}
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#FFFEF8", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "x2": {"field": "x1"},
+        "y": {"field": "y0", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "y2": {"field": "y1"},
+        "color": {
+          "field": "bird_group",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": ["Passerines", "Parrots", "Waterbirds", "Raptors", "Other"],
+            "range": ["#3E7856", "#E8A23D", "#3B6FA0", "#C1484B", "#8F7CA8"]
+          },
+          "legend": {"orient": "bottom", "direction": "horizontal", "columns": 3}
+        },
+        "tooltip": [
+          {"field": "source", "type": "nominal", "title": "Source"},
+          {"field": "bird_group", "type": "nominal", "title": "Group"},
+          {"field": "record_count", "type": "quantitative", "title": "Records", "format": ","},
+          {"field": "share_within_source", "type": "quantitative", "title": "Share within source", "format": ".1%"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"label": "eBird Australia", "x": 25}, {"label": "Birdata", "x": 75}]},
+      "mark": {"type": "text", "dy": -8, "fontSize": 12, "fontWeight": "bold", "color": "#34443A"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}},
+        "y": {"datum": 100, "type": "quantitative", "scale": {"domain": [0, 100]}},
+        "text": {"field": "label"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#FFFEF8",
+    "font": "Arial",
+    "view": {"stroke": null}
+  }
+}

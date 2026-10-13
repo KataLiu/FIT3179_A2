@@ -1,0 +1,163 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "When do Australians report birds?",
+    "subtitle": [
+      "Monthly citizen-science records reveal seasonal patterns in observation activity.",
+      "Darker cells represent more submitted bird records."
+    ],
+    "anchor": "start",
+    "fontSize": 21,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63",
+    "offset": 16
+  },
+  "width": 700,
+  "height": 370,
+  "background": "#FFFEF8",
+  "params": [
+    {
+      "name": "source_select",
+      "value": "Combined",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Combined",
+          "eBird Australia",
+          "BirdLife Birdata"
+        ],
+        "name": "Source: "
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C03_C08_MonthlyRecords_2018_2024.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "month": "number",
+        "exact_count": "number",
+        "annual_total": "number",
+        "share_of_source_year": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "source_select === 'Combined' || datum.source === source_select"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "exact_count",
+          "as": "records"
+        }
+      ],
+      "groupby": [
+        "year",
+        "month",
+        "month_name"
+      ]
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 3,
+    "stroke": "#FFFEF8",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "labelAngle": 0,
+        "labelPadding": 8,
+        "tickSize": 0,
+        "domain": false
+      }
+    },
+    "y": {
+      "field": "month_name",
+      "type": "ordinal",
+      "title": null,
+      "sort": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "axis": {
+        "labelPadding": 8,
+        "tickSize": 0,
+        "domain": false
+      }
+    },
+    "color": {
+      "field": "records",
+      "type": "quantitative",
+      "title": "Number of records",
+      "scale": {
+        "range": [
+          "#F5F0D3",
+          "#DCE8BC",
+          "#A8CE92",
+          "#67A66F",
+          "#3E7856",
+          "#174C3A"
+        ]
+      },
+      "legend": {
+        "orient": "right",
+        "format": "~s",
+        "gradientLength": 260,
+        "titleFontWeight": "normal"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "month_name",
+        "type": "ordinal",
+        "title": "Month"
+      },
+      {
+        "field": "records",
+        "type": "quantitative",
+        "title": "Records",
+        "format": ","
+      }
+    ]
+  },
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A",
+      "grid": false
+    },
+    "legend": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A",
+      "padding": 10
+    }
+  }
+}

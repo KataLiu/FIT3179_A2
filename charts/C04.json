@@ -1,0 +1,173 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Where are selected birds reported?",
+    "subtitle": [
+      "Each point is a verified location from matched, stratified samples collected between 2018 and 2024.",
+      "Point density shows the sample locations, not bird abundance."
+    ],
+    "anchor": "start",
+    "fontSize": 21,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63",
+    "offset": 16
+  },
+  "width": 760,
+  "height": 450,
+  "background": "#FFFEF8",
+  "projection": {
+    "type": "mercator",
+    "center": [
+      134,
+      -27
+    ],
+    "scale": 620
+  },
+  "params": [
+    {
+      "name": "species_select",
+      "value": "Australian Magpie",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All three selected birds",
+          "Australian Magpie",
+          "Rainbow Lorikeet",
+          "Laughing Kookaburra"
+        ],
+        "name": "Species: "
+      }
+    },
+    {
+      "name": "source_select",
+      "value": "Both sources",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Both sources",
+          "eBird Australia",
+          "BirdLife Birdata"
+        ],
+        "name": "Source: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/Australia_States_ASGS2021_Simplified.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#F3EBCF",
+        "stroke": "#819780",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C04_HeroSpeciesSampleLocations_2018_2024.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "month": "number",
+            "latitude": "number",
+            "longitude": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "species_select === 'All three selected birds' || datum.species === species_select"
+        },
+        {
+          "filter": "source_select === 'Both sources' || datum.source === source_select"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 28,
+        "opacity": 0.58,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 0.35,
+        "clip": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "species",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "Australian Magpie",
+              "Rainbow Lorikeet",
+              "Laughing Kookaburra"
+            ],
+            "range": [
+              "#3978B8",
+              "#E56B3F",
+              "#E5A93D"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "symbolType": "circle",
+            "symbolSize": 110
+          }
+        },
+        "tooltip": [
+          {
+            "field": "species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "scientific_name",
+            "type": "nominal",
+            "title": "Scientific name"
+          },
+          {
+            "field": "source",
+            "type": "nominal",
+            "title": "Citizen-science source"
+          },
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A",
+      "padding": 8
+    }
+  }
+}
