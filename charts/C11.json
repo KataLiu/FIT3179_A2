@@ -1,0 +1,250 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "What did the community contribute in 2025?",
+    "subtitle": [
+      "The 2025 Aussie Bird Count turned thousands of individual observations into a nationwide wildlife dataset.",
+      "Australian Magpie was the most counted species nationally."
+    ],
+    "anchor": "start",
+    "fontSize": 20,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#5F6B63",
+    "offset": 18
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C10_C11_AussieBirdCount_Confirmed_2023_2025.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "participants": "number",
+        "birds_counted": "number",
+        "species_recorded": "number",
+        "checklists_submitted": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.year === 2025"
+    },
+    {
+      "fold": [
+        "participants",
+        "checklists_submitted",
+        "birds_counted",
+        "species_recorded"
+      ],
+      "as": [
+        "metric",
+        "metric_value"
+      ]
+    },
+    {
+      "calculate": "datum.metric === 'participants' ? 1 : datum.metric === 'checklists_submitted' ? 2 : datum.metric === 'birds_counted' ? 3 : 4",
+      "as": "metric_order"
+    },
+    {
+      "calculate": "datum.metric === 'participants' ? 'Participants' : datum.metric === 'checklists_submitted' ? 'Checklists' : datum.metric === 'birds_counted' ? 'Bird observations' : 'Species recorded'",
+      "as": "metric_title"
+    },
+    {
+      "calculate": "datum.metric === 'participants' ? 'PEOPLE' : datum.metric === 'checklists_submitted' ? 'CHECKLISTS' : datum.metric === 'birds_counted' ? 'BIRD RECORDS' : 'SPECIES'",
+      "as": "metric_icon"
+    },
+    {
+      "calculate": "format(datum.metric_value, ',')",
+      "as": "display_value"
+    },
+    {
+      "calculate": "datum.metric === 'participants' ? 'citizen scientists joined' : datum.metric === 'checklists_submitted' ? 'survey lists submitted' : datum.metric === 'birds_counted' ? 'individual birds counted' : 'bird species identified'",
+      "as": "metric_description"
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "metric_order",
+      "type": "ordinal",
+      "sort": "ascending",
+      "header": {
+        "labels": false,
+        "title": null
+      }
+    }
+  },
+  "spacing": 14,
+  "spec": {
+    "width": 160,
+    "height": 225,
+    "layer": [
+      {
+        "mark": {
+          "type": "rect",
+          "cornerRadius": 12,
+          "stroke": "#FFFFFF",
+          "strokeWidth": 2
+        },
+        "encoding": {
+          "x": {
+            "datum": 0,
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                0,
+                1
+              ],
+              "nice": false
+            },
+            "axis": null
+          },
+          "x2": {
+            "datum": 1
+          },
+          "y": {
+            "datum": 0,
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                0,
+                1
+              ],
+              "nice": false
+            },
+            "axis": null
+          },
+          "y2": {
+            "datum": 1
+          },
+          "color": {
+            "field": "metric",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "participants",
+                "checklists_submitted",
+                "birds_counted",
+                "species_recorded"
+              ],
+              "range": [
+                "#DDEBDD",
+                "#E7E2F0",
+                "#E1ECF1",
+                "#F6E9C8"
+              ]
+            },
+            "legend": null
+          },
+          "tooltip": [
+            {
+              "field": "metric_title",
+              "type": "nominal",
+              "title": "Contribution"
+            },
+            {
+              "field": "metric_value",
+              "type": "quantitative",
+              "title": "2025 total",
+              "format": ","
+            },
+            {
+              "field": "source_status",
+              "type": "nominal",
+              "title": "Source"
+            }
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "fontSize": 11,
+          "fontWeight": "bold",
+          "color": "#68736C",
+          "baseline": "middle"
+        },
+        "encoding": {
+          "x": {
+            "value": 80
+          },
+          "y": {
+            "value": 35
+          },
+          "text": {
+            "field": "metric_icon",
+            "type": "nominal"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "fontSize": 25,
+          "fontWeight": "bold",
+          "color": "#26372E",
+          "baseline": "middle"
+        },
+        "encoding": {
+          "x": {
+            "value": 80
+          },
+          "y": {
+            "value": 92
+          },
+          "text": {
+            "field": "display_value",
+            "type": "nominal"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "fontSize": 13,
+          "fontWeight": "bold",
+          "color": "#34443A",
+          "baseline": "middle"
+        },
+        "encoding": {
+          "x": {
+            "value": 80
+          },
+          "y": {
+            "value": 130
+          },
+          "text": {
+            "field": "metric_title",
+            "type": "nominal"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "fontSize": 10,
+          "color": "#5F6B63",
+          "baseline": "middle"
+        },
+        "encoding": {
+          "x": {
+            "value": 80
+          },
+          "y": {
+            "value": 174
+          },
+          "text": {
+            "field": "metric_description",
+            "type": "nominal"
+          }
+        }
+      }
+    ]
+  },
+  "config": {
+    "background": "#FFFEF8",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    }
+  }
+}

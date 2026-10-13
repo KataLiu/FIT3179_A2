@@ -1,61 +1,280 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Reporting activity reshapes Australia, 2024",
+    "text": "What if Australia were resized by bird-reporting activity?",
     "subtitle": [
-      "Geographic areas replaced by circles (Dorling cartogram); positions are approximate.",
-      "Circle area = total records; colour = Birdata's share of those records."
+      "Circle area represents combined eBird and Birdata records in 2024; colour represents Birdata's share.",
+      "The circles preserve approximate geographic positions, but state area is replaced by reporting activity."
     ],
     "anchor": "start",
-    "fontSize": 18,
+    "fontSize": 20,
     "subtitleFontSize": 12,
-    "subtitleColor": "#5F6B63"
+    "subtitleColor": "#5F6B63",
+    "offset": 18
   },
-  "width": 380,
-  "height": 320,
+  "width": 700,
+  "height": 430,
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C12_DorlingCartogram_2024.csv",
-    "format": {"type": "csv", "parse": {"dorling_x": "number", "dorling_y": "number", "total_records": "number", "birdata_share": "number"}}
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C12_DorlingCartogram_2024.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "abs_state_code": "number",
+        "longitude": "number",
+        "latitude": "number",
+        "ebird_records": "number",
+        "birdata_records": "number",
+        "total_records": "number",
+        "birdata_share": "number",
+        "record_rank": "number",
+        "dorling_x": "number",
+        "dorling_y": "number"
+      }
+    }
   },
+  "transform": [
+    {
+      "calculate": "datum.total_records >= 1000000 ? format(datum.total_records / 1000000, '.1f') + 'M' : format(datum.total_records / 1000, '.0f') + 'k'",
+      "as": "records_label"
+    }
+  ],
   "layer": [
     {
-      "mark": {"type": "circle", "opacity": 0.9, "stroke": "#5F6B63", "strokeWidth": 0.5},
+      "mark": {
+        "type": "circle",
+        "opacity": 0.94,
+        "stroke": "#FFFFFF",
+        "strokeWidth": 2
+      },
       "encoding": {
-        "x": {"field": "dorling_x", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "y": {"field": "dorling_y", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
+        "x": {
+          "field": "dorling_x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "dorling_y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "reverse": true,
+            "nice": false
+          },
+          "axis": null
+        },
         "size": {
           "field": "total_records",
           "type": "quantitative",
-          "title": "Total records",
-          "scale": {"type": "sqrt", "range": [200, 5500]},
-          "legend": {"format": ",.0f"}
+          "title": "Combined records",
+          "scale": {
+            "domain": [
+              0,
+              2600000
+            ],
+            "range": [
+              500,
+              10000
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "direction": "vertical",
+            "values": [
+              500000,
+              1000000,
+              2000000,
+              2500000
+            ],
+            "labelExpr": "datum.value >= 1000000 ? format(datum.value / 1000000, '.1f') + 'M' : format(datum.value / 1000, '.0f') + 'k'",
+            "symbolFillColor": "#8EBB91",
+            "symbolStrokeColor": "#FFFFFF",
+            "titleFontSize": 12,
+            "labelFontSize": 11,
+            "offset": 14
+          }
         },
         "color": {
           "field": "birdata_share",
           "type": "quantitative",
           "title": "Birdata share",
-          "scale": {"scheme": "oranges"},
-          "legend": {"format": ".0%"}
+          "scale": {
+            "domain": [
+              0,
+              0.27
+            ],
+            "range": [
+              "#EEF1D8",
+              "#C9DCB8",
+              "#91BA91",
+              "#599277",
+              "#2E6659"
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "direction": "vertical",
+            "format": ".0%",
+            "gradientLength": 160,
+            "gradientThickness": 14,
+            "titleFontSize": 12,
+            "labelFontSize": 11,
+            "offset": 14
+          }
         },
         "tooltip": [
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "total_records", "type": "quantitative", "title": "Total records", "format": ","},
-          {"field": "birdata_share", "type": "quantitative", "title": "Birdata share", "format": ".1%"}
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "record_rank",
+            "type": "quantitative",
+            "title": "Record rank",
+            "format": ".0f"
+          },
+          {
+            "field": "total_records",
+            "type": "quantitative",
+            "title": "Combined records",
+            "format": ","
+          },
+          {
+            "field": "ebird_records",
+            "type": "quantitative",
+            "title": "eBird records",
+            "format": ","
+          },
+          {
+            "field": "birdata_records",
+            "type": "quantitative",
+            "title": "Birdata records",
+            "format": ","
+          },
+          {
+            "field": "birdata_share",
+            "type": "quantitative",
+            "title": "Birdata share",
+            "format": ".1%"
+          }
         ]
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#FFFEF8"},
+      "mark": {
+        "type": "text",
+        "dy": -7,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "baseline": "middle"
+      },
       "encoding": {
-        "x": {"field": "dorling_x", "type": "quantitative", "scale": {"domain": [0, 100]}},
-        "y": {"field": "dorling_y", "type": "quantitative", "scale": {"domain": [0, 100]}},
-        "text": {"field": "state_code"}
+        "x": {
+          "field": "dorling_x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "dorling_y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "reverse": true,
+            "nice": false
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "state_code",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.birdata_share >= 0.17",
+            "value": "#FFFFFF"
+          },
+          "value": "#26372E"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": 10,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "field": "dorling_x",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "dorling_y",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "reverse": true,
+            "nice": false
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "records_label",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.birdata_share >= 0.17",
+            "value": "#FFFFFF"
+          },
+          "value": "#26372E"
+        }
       }
     }
   ],
   "config": {
     "background": "#FFFEF8",
     "font": "Arial",
-    "view": {"stroke": null}
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A"
+    }
   }
 }
