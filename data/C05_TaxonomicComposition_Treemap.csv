@@ -1,0 +1,6 @@
+bird_group,record_count,record_share,x0,x1,y0,y1,sample_total,sample_scope
+Passerines,2879,0.562305,0.0,56.230469,0.0,100.0,5120,Combined matched year-by-state stratified samples from eBird Australia and BirdLife Birdata
+Parrots,500,0.097656,56.230469,88.319568,69.567158,100.0,5120,Combined matched year-by-state stratified samples from eBird Australia and BirdLife Birdata
+Waterbirds,1057,0.206445,56.230469,100.0,0.0,47.166444,5120,Combined matched year-by-state stratified samples from eBird Australia and BirdLife Birdata
+Raptors,182,0.035547,88.319568,100.0,69.567158,100.0,5120,Combined matched year-by-state stratified samples from eBird Australia and BirdLife Birdata
+Other,502,0.098047,56.230469,100.0,47.166444,69.567158,5120,Combined matched year-by-state stratified samples from eBird Australia and BirdLife Birdata

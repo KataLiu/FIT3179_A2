@@ -1,0 +1,9 @@
+year,state,state_code,abs_state_code,longitude,latitude,ebird_records,birdata_records,total_records,birdata_share,record_rank,dorling_x,dorling_y
+2024,New South Wales,NSW,1,147.0,-32.0,2208364,243461,2451825,0.099298,2,72,60
+2024,Victoria,VIC,2,144.5,-37.0,2287642,238221,2525863,0.094313,1,58,79
+2024,Queensland,QLD,3,144.0,-22.5,2193924,137824,2331748,0.059108,3,72,31
+2024,South Australia,SA,4,135.0,-30.0,355024,125108,480132,0.26057,5,45,51
+2024,Western Australia,WA,5,121.0,-25.0,642001,108652,750653,0.144743,4,18,52
+2024,Tasmania,TAS,6,146.7,-42.0,385742,85362,471104,0.181196,6,51,94
+2024,Northern Territory,NT,7,133.0,-20.0,321253,16247,337500,0.048139,8,44,18
+2024,Australian Capital Territory,ACT,8,149.13,-35.28,332786,6447,339233,0.019005,7,88,65
