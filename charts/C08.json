@@ -1,57 +1,396 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "When are birdwatchers most active? Monthly share of records",
-    "subtitle": "Average monthly share of each source's annual records, 2018–2024.",
+    "text": "When are bird observations reported?",
+    "subtitle": [
+      "Monthly share of each platform's annual records reveals seasonal reporting patterns.",
+      "A higher percentage means that more of that year's observations were submitted in that month."
+    ],
     "anchor": "start",
-    "fontSize": 18,
+    "fontSize": 20,
     "subtitleFontSize": 12,
-    "subtitleColor": "#5F6B63"
+    "subtitleColor": "#5F6B63",
+    "offset": 17
   },
-  "width": 380,
-  "height": 260,
-  "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C03_C08_MonthlyRecords_2018_2024.csv",
-    "format": {"type": "csv", "parse": {"month": "number", "share_of_source_year": "number"}}
-  },
-  "transform": [
-    {"aggregate": [{"op": "mean", "field": "share_of_source_year", "as": "avg_share"}], "groupby": ["source", "month", "month_name"]}
+  "width": 700,
+  "height": 340,
+  "params": [
+    {
+      "name": "selected_year",
+      "value": 2024,
+      "bind": {
+        "input": "select",
+        "name": "Year: ",
+        "options": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "labels": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024"
+        ]
+      }
+    }
   ],
-  "mark": {"type": "line", "point": {"filled": true, "size": 45}, "strokeWidth": 2.5},
-  "encoding": {
-    "x": {
-      "field": "month_name",
-      "type": "ordinal",
-      "sort": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
-      "title": null,
-      "axis": {"labelAngle": 0}
-    },
-    "y": {
-      "field": "avg_share",
-      "type": "quantitative",
-      "title": "Share of records",
-      "axis": {"format": ".0%"}
-    },
-    "color": {
-      "field": "source",
-      "type": "nominal",
-      "title": null,
-      "scale": {
-        "domain": ["eBird Australia", "BirdLife Birdata"],
-        "range": ["#3E7856", "#E49A3A"]
-      },
-      "legend": {"orient": "top", "direction": "horizontal"}
-    },
-    "tooltip": [
-      {"field": "source", "type": "nominal", "title": "Source"},
-      {"field": "month_name", "type": "nominal", "title": "Month"},
-      {"field": "avg_share", "type": "quantitative", "title": "Avg. share", "format": ".1%"}
-    ]
+  "data": {
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C03_C08_MonthlyRecords_2018_2024.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "month": "number",
+        "exact_count": "number",
+        "annual_total": "number",
+        "share_of_source_year": "number"
+      }
+    }
   },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {
+            "season": "Summer",
+            "start": 0.5,
+            "end": 2.5,
+            "colour": "#F8E8C7"
+          },
+          {
+            "season": "Autumn",
+            "start": 2.5,
+            "end": 5.5,
+            "colour": "#EEF0D9"
+          },
+          {
+            "season": "Winter",
+            "start": 5.5,
+            "end": 8.5,
+            "colour": "#E1ECF1"
+          },
+          {
+            "season": "Spring",
+            "start": 8.5,
+            "end": 11.5,
+            "colour": "#E2EEE0"
+          },
+          {
+            "season": "Summer",
+            "start": 11.5,
+            "end": 12.5,
+            "colour": "#F8E8C7"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "opacity": 0.65
+      },
+      "encoding": {
+        "x": {
+          "field": "start",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0.5, 12.5],
+            "nice": false
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "end"
+        },
+        "y": {
+          "value": 0
+        },
+        "y2": {
+          "value": 340
+        },
+        "color": {
+          "field": "colour",
+          "type": "nominal",
+          "scale": null,
+          "legend": null
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "season": "SUMMER",
+            "position": 1.5
+          },
+          {
+            "season": "AUTUMN",
+            "position": 4
+          },
+          {
+            "season": "WINTER",
+            "position": 7
+          },
+          {
+            "season": "SPRING",
+            "position": 10
+          },
+          {
+            "season": "SUMMER",
+            "position": 12
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#68736C",
+        "baseline": "top",
+        "dy": 8
+      },
+      "encoding": {
+        "x": {
+          "field": "position",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0.5, 12.5],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "value": 0
+        },
+        "text": {
+          "field": "season"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "reference": 0.083333
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "stroke": "#7B817D",
+        "strokeWidth": 1.2,
+        "strokeDash": [6, 5],
+        "opacity": 0.8
+      },
+      "encoding": {
+        "y": {
+          "field": "reference",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0.05, 0.13],
+            "nice": false
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "reference": 0.083333,
+            "label": "Even monthly share: 8.3%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -4,
+        "dy": -4,
+        "fontSize": 10,
+        "color": "#68736C"
+      },
+      "encoding": {
+        "x": {
+          "datum": 12.5,
+          "type": "quantitative",
+          "scale": {
+            "domain": [0.5, 12.5],
+            "nice": false
+          }
+        },
+        "y": {
+          "field": "reference",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0.05, 0.13],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year === selected_year"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "point": {
+          "filled": true,
+          "size": 75,
+          "stroke": "#FFFEF8",
+          "strokeWidth": 1
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "month",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "domain": [0.5, 12.5],
+            "nice": false
+          },
+          "axis": {
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "labelExpr": "['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value - 1]",
+            "labelAngle": 0,
+            "labelPadding": 8,
+            "tickSize": 0,
+            "domain": false,
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "share_of_source_year",
+          "type": "quantitative",
+          "title": "Share of annual records",
+          "scale": {
+            "domain": [0.05, 0.13],
+            "nice": false
+          },
+          "axis": {
+            "format": ".0%",
+            "values": [
+              0.05,
+              0.07,
+              0.09,
+              0.11,
+              0.13
+            ],
+            "domain": false,
+            "grid": true,
+            "gridColor": "#FFFFFF",
+            "gridWidth": 1.2,
+            "titlePadding": 12
+          }
+        },
+        "color": {
+          "field": "source",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "eBird Australia",
+              "BirdLife Birdata"
+            ],
+            "range": [
+              "#3E7856",
+              "#E89A32"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "symbolType": "circle",
+            "symbolSize": 160,
+            "labelFontSize": 12,
+            "offset": 8
+          }
+        },
+        "detail": {
+          "field": "source"
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "month_name",
+            "type": "ordinal",
+            "title": "Month"
+          },
+          {
+            "field": "source",
+            "type": "nominal",
+            "title": "Citizen-science source"
+          },
+          {
+            "field": "exact_count",
+            "type": "quantitative",
+            "title": "Records",
+            "format": ","
+          },
+          {
+            "field": "share_of_source_year",
+            "type": "quantitative",
+            "title": "Share of annual records",
+            "format": ".1%"
+          },
+          {
+            "field": "annual_total",
+            "type": "quantitative",
+            "title": "Annual records",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ],
   "config": {
     "background": "#FFFEF8",
     "font": "Arial",
-    "view": {"stroke": null},
-    "axis": {"gridColor": "#E3E8E2", "domain": false}
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A",
+      "titleFontWeight": "normal",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A"
+    }
   }
 }
