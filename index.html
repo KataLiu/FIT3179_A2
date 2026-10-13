@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An interactive exploration of Australian birdwatching records and citizen-science participation."
+    />
+    <title>Australia Through Birdwatchers' Eyes</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-decoration hero-decoration-left" aria-hidden="true"></div>
+      <div class="hero-decoration hero-decoration-right" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow">Australian birdwatching · citizen science</p>
+        <h1>Australia Through<br /><span>Birdwatchers' Eyes</span></h1>
+        <p class="hero-copy">
+          Where people observe, which birds they report, how activity changes
+          through the seasons, and how community participation supports
+          wildlife research.
+        </p>
+        <div class="hero-facts" aria-label="Dashboard scope">
+          <span>2018–2024 observations</span>
+          <span>2 citizen-science platforms</span>
+          <span>12 visual stories</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="story-nav" aria-label="Story sections">
+      <a href="#reach">01 · Reach</a>
+      <a href="#birds">02 · Birds</a>
+      <a href="#seasons">03 · Seasons</a>
+      <a href="#people">04 · People</a>
+    </nav>
+
+    <main>
+      <section class="story-section" id="reach">
+        <header class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <p class="section-kicker">Observation footprint</p>
+            <h2>Where do our records reach?</h2>
+            <p>
+              Citizen-science observations build a shared picture of Australia,
+              but record totals describe reporting activity rather than bird abundance.
+            </p>
+          </div>
+        </header>
+
+        <article class="chart-card chart-card-wide">
+          <div id="chart-c01" class="chart-host" aria-label="State record map"></div>
+        </article>
+
+        <div class="chart-grid">
+          <article class="chart-card">
+            <div id="chart-c02" class="chart-host" aria-label="Annual records chart"></div>
+          </article>
+          <article class="chart-card">
+            <div id="chart-c03" class="chart-host" aria-label="Observation calendar"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="story-section" id="birds">
+        <header class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <p class="section-kicker">Species and composition</p>
+            <h2>Which birds are reported, and where?</h2>
+            <p>
+              Selected species reveal different geographic footprints, while
+              taxonomic composition shows what each platform contributes to the sample.
+            </p>
+          </div>
+        </header>
+
+        <article class="chart-card chart-card-wide">
+          <div id="chart-c04" class="chart-host" aria-label="Selected bird locations map"></div>
+        </article>
+
+        <div class="chart-grid">
+          <article class="chart-card">
+            <div id="chart-c05" class="chart-host" aria-label="Taxonomic treemap"></div>
+          </article>
+          <article class="chart-card">
+            <div id="chart-c06" class="chart-host" aria-label="Source composition mosaic"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="story-section" id="seasons">
+        <header class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <p class="section-kicker">Time and place</p>
+            <h2>How do reports change through the year?</h2>
+            <p>
+              Seasonal peaks, platform shares and changing state rankings reveal
+              when and where the national record is being assembled.
+            </p>
+          </div>
+        </header>
+
+        <article class="chart-card chart-card-wide">
+          <div id="chart-c07" class="chart-host" aria-label="Birdata share choropleth"></div>
+        </article>
+
+        <div class="chart-grid">
+          <article class="chart-card">
+            <div id="chart-c08" class="chart-host" aria-label="Monthly reporting pattern"></div>
+          </article>
+          <article class="chart-card">
+            <div id="chart-c09" class="chart-host" aria-label="State rank bump chart"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="story-section" id="people">
+        <header class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <p class="section-kicker">Community contribution</p>
+            <h2>The people behind the picture</h2>
+            <p>
+              Thousands of participants turn local observations into checklists,
+              species records and a growing evidence base for wildlife research.
+            </p>
+          </div>
+        </header>
+
+        <div class="chart-grid">
+          <article class="chart-card">
+            <div id="chart-c10" class="chart-host" aria-label="Participation lollipop chart"></div>
+          </article>
+          <article class="chart-card">
+            <div id="chart-c11" class="chart-host" aria-label="2025 contribution cards"></div>
+          </article>
+        </div>
+
+        <article class="chart-card chart-card-wide">
+          <div id="chart-c12" class="chart-host" aria-label="Dorling cartogram"></div>
+        </article>
+
+        <aside class="takeaway">
+          <div class="takeaway-mark" aria-hidden="true">!</div>
+          <div>
+            <h3>What the records can tell us</h3>
+            <p>
+              Citizen-science records help identify spatial patterns, seasonal activity
+              and knowledge gaps. More records do not automatically mean more birds:
+              observer effort, platform use and accessibility affect what appears in the data.
+            </p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Data sources:</strong> eBird Australia and BirdLife Australia Birdata records accessed through documented citizen-science sources; BirdLife Australia Aussie Bird Count results; ABS ASGS 2021 state boundaries.</p>
+      <p>FIT3179 Data Visualisation 2 · Australia-focused birdwatching study</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
