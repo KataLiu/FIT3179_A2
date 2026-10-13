@@ -1,58 +1,269 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Composition by source",
-    "subtitle": "Same year-by-state sampling structure; left = eBird Australia, right = Birdata.",
+    "text": "Do the two citizen-science projects record the same mix of birds?",
+    "subtitle": [
+      "Birdata's sample contains a larger share of passerines, while eBird contains more waterbirds.",
+      "Each column represents 2,560 matched sample records; percentages are not population estimates."
+    ],
     "anchor": "start",
-    "fontSize": 18,
+    "fontSize": 20,
     "subtitleFontSize": 12,
-    "subtitleColor": "#5F6B63"
+    "subtitleColor": "#5F6B63",
+    "offset": 18
   },
-  "width": 420,
-  "height": 300,
+  "width": 700,
+  "height": 390,
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C06_CompositionBySource_Mosaic.csv",
-    "format": {"type": "csv", "parse": {"x0": "number", "x1": "number", "y0": "number", "y1": "number", "share_within_source": "number"}}
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C06_CompositionBySource_Mosaic.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "record_count": "number",
+        "share_within_source": "number",
+        "joint_sample_share": "number",
+        "x0": "number",
+        "x1": "number",
+        "y0": "number",
+        "y1": "number",
+        "source_sample_total": "number"
+      }
+    }
   },
+  "transform": [
+    {
+      "calculate": "(datum.x0 + datum.x1) / 2",
+      "as": "x_center"
+    },
+    {
+      "calculate": "(datum.y0 + datum.y1) / 2",
+      "as": "y_center"
+    }
+  ],
   "layer": [
     {
-      "mark": {"type": "rect", "stroke": "#FFFEF8", "strokeWidth": 2},
+      "mark": {
+        "type": "rect",
+        "stroke": "#FFFEF8",
+        "strokeWidth": 5,
+        "cornerRadius": 3
+      },
       "encoding": {
-        "x": {"field": "x0", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "x2": {"field": "x1"},
-        "y": {"field": "y0", "type": "quantitative", "scale": {"domain": [0, 100]}, "axis": null},
-        "y2": {"field": "y1"},
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x1"
+        },
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "reverse": true,
+            "nice": false
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y1"
+        },
         "color": {
           "field": "bird_group",
           "type": "nominal",
           "title": null,
           "scale": {
-            "domain": ["Passerines", "Parrots", "Waterbirds", "Raptors", "Other"],
-            "range": ["#3E7856", "#E8A23D", "#3B6FA0", "#C1484B", "#8F7CA8"]
+            "domain": [
+              "Passerines",
+              "Parrots",
+              "Waterbirds",
+              "Raptors",
+              "Other"
+            ],
+            "range": [
+              "#79A984",
+              "#E8C66A",
+              "#83B4CF",
+              "#D98B68",
+              "#A994BF"
+            ]
           },
-          "legend": {"orient": "bottom", "direction": "horizontal", "columns": 3}
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 5,
+            "symbolType": "square",
+            "symbolSize": 150,
+            "labelFontSize": 12,
+            "offset": 15
+          }
         },
         "tooltip": [
-          {"field": "source", "type": "nominal", "title": "Source"},
-          {"field": "bird_group", "type": "nominal", "title": "Group"},
-          {"field": "record_count", "type": "quantitative", "title": "Records", "format": ","},
-          {"field": "share_within_source", "type": "quantitative", "title": "Share within source", "format": ".1%"}
+          {
+            "field": "source",
+            "type": "nominal",
+            "title": "Citizen-science source"
+          },
+          {
+            "field": "bird_group",
+            "type": "nominal",
+            "title": "Bird group"
+          },
+          {
+            "field": "record_count",
+            "type": "quantitative",
+            "title": "Sample records",
+            "format": ","
+          },
+          {
+            "field": "share_within_source",
+            "type": "quantitative",
+            "title": "Share within source",
+            "format": ".1%"
+          },
+          {
+            "field": "source_sample_total",
+            "type": "quantitative",
+            "title": "Source sample size",
+            "format": ","
+          }
         ]
       }
     },
     {
-      "data": {"values": [{"label": "eBird Australia", "x": 25}, {"label": "Birdata", "x": 75}]},
-      "mark": {"type": "text", "dy": -8, "fontSize": 12, "fontWeight": "bold", "color": "#34443A"},
+      "transform": [
+        {
+          "filter": "datum.share_within_source >= 0.07"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 13,
+        "dy": -8,
+        "color": "#26372E",
+        "baseline": "middle"
+      },
       "encoding": {
-        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 100]}},
-        "y": {"datum": 100, "type": "quantitative", "scale": {"domain": [0, 100]}},
-        "text": {"field": "label"}
+        "x": {
+          "field": "x_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "reverse": true,
+            "nice": false
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "bird_group"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.share_within_source >= 0.07"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "dy": 10,
+        "color": "#26372E",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "field": "x_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "y_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "reverse": true,
+            "nice": false
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "share_within_source",
+          "type": "quantitative",
+          "format": ".1%"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.bird_group === 'Passerines'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "color": "#FFFFFF",
+        "baseline": "top",
+        "dy": 12
+      },
+      "encoding": {
+        "x": {
+          "field": "x_center",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 100],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "value": 0
+        },
+        "text": {
+          "field": "source"
+        }
       }
     }
   ],
   "config": {
     "background": "#FFFEF8",
     "font": "Arial",
-    "view": {"stroke": null}
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A",
+      "titleFontWeight": "normal",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A"
+    }
   }
 }

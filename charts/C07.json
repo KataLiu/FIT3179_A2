@@ -1,51 +1,233 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Which community shapes each state? Birdata share by state, 2024",
-    "subtitle": "Darker orange = a larger share of that state's combined records came from Birdata rather than eBird.",
+    "text": "Where does BirdLife Australia's Birdata contribute more records?",
+    "subtitle": [
+      "Birdata is BirdLife Australia's national platform for submitting bird observations.",
+      "Colour shows Birdata's share of combined Birdata and eBird records in each state or territory.",
+      "The percentage reflects reporting activity, not bird abundance."
+    ],
     "anchor": "start",
-    "fontSize": 18,
+    "fontSize": 20,
     "subtitleFontSize": 12,
-    "subtitleColor": "#5F6B63"
+    "subtitleColor": "#5F6B63",
+    "offset": 17
   },
-  "width": 420,
-  "height": 340,
-  "projection": {"type": "mercator"},
+  "width": 700,
+  "height": 410,
+  "projection": {
+    "type": "mercator",
+    "center": [134, -28],
+    "scale": 570
+  },
+  "params": [
+    {
+      "name": "selected_year",
+      "value": 2024,
+      "bind": {
+        "input": "select",
+        "name": "Year: ",
+        "options": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "labels": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024"
+        ]
+      }
+    }
+  ],
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/Australia_States_ASGS2021_Simplified.topojson",
-    "format": {"type": "topojson", "feature": "australia_states"}
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "abs_state_code": "number",
+        "longitude": "number",
+        "latitude": "number",
+        "ebird_records": "number",
+        "birdata_records": "number",
+        "total_records": "number",
+        "birdata_share": "number",
+        "record_rank": "number"
+      }
+    }
   },
   "transform": [
     {
-      "lookup": "properties.state",
+      "filter": "datum.year === selected_year"
+    },
+    {
+      "lookup": "abs_state_code",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
-          "format": {"type": "csv", "parse": {"birdata_share": "number"}}
+          "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/Australia_States_ASGS2021_Simplified_Fixed.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "australia_states"
+          }
         },
-        "key": "state",
-        "fields": ["birdata_share", "year"]
+        "key": "properties.abs_state_code"
+      },
+      "as": "state_geometry"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#FFFFFF",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "shape": {
+          "field": "state_geometry",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "birdata_share",
+          "type": "quantitative",
+          "title": "Birdata share of records",
+          "scale": {
+            "domain": [0, 0.42],
+            "range": [
+              "#F2F0D8",
+              "#C7DCB7",
+              "#8EBB91",
+              "#559178",
+              "#245E55"
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "direction": "vertical",
+            "format": ".0%",
+            "gradientLength": 230,
+            "gradientThickness": 14,
+            "titleFontSize": 12,
+            "labelFontSize": 11,
+            "offset": 12
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "birdata_share",
+            "type": "quantitative",
+            "title": "Birdata share of combined records",
+            "format": ".1%"
+          },
+          {
+            "field": "birdata_records",
+            "type": "quantitative",
+            "title": "Birdata records",
+            "format": ","
+          },
+          {
+            "field": "ebird_records",
+            "type": "quantitative",
+            "title": "eBird records",
+            "format": ","
+          },
+          {
+            "field": "total_records",
+            "type": "quantitative",
+            "title": "Combined records",
+            "format": ","
+          }
+        ]
       }
     },
-    {"filter": "datum.year == 2024"}
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#26372E"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state_code",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State or territory"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "birdata_share",
+            "type": "quantitative",
+            "title": "Birdata share of combined records",
+            "format": ".1%"
+          },
+          {
+            "field": "birdata_records",
+            "type": "quantitative",
+            "title": "Birdata records",
+            "format": ","
+          },
+          {
+            "field": "ebird_records",
+            "type": "quantitative",
+            "title": "eBird records",
+            "format": ","
+          },
+          {
+            "field": "total_records",
+            "type": "quantitative",
+            "title": "Combined records",
+            "format": ","
+          }
+        ]
+      }
+    }
   ],
-  "mark": {"type": "geoshape", "stroke": "#FFFFFF", "strokeWidth": 1},
-  "encoding": {
-    "color": {
-      "field": "birdata_share",
-      "type": "quantitative",
-      "title": "Birdata share",
-      "scale": {"scheme": "oranges"},
-      "legend": {"format": ".0%"}
-    },
-    "tooltip": [
-      {"field": "properties.state", "type": "nominal", "title": "State"},
-      {"field": "birdata_share", "type": "quantitative", "title": "Birdata share", "format": ".1%"}
-    ]
-  },
   "config": {
     "background": "#FFFEF8",
     "font": "Arial",
-    "view": {"stroke": null}
+    "view": {
+      "stroke": null,
+      "fill": "#FFFEF8"
+    },
+    "legend": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A"
+    }
   }
 }

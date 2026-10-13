@@ -1,52 +1,287 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Changing state ranks, 2018–2024",
-    "subtitle": "Rank by total combined records each year (1 = most records); South Australia climbed from 7th–8th to 5th by 2022.",
+    "text": "Which states lead Australia's bird-reporting activity?",
+    "subtitle": [
+      "Leadership shifted between Queensland and Victoria, while New South Wales rose to second by 2024.",
+      "Rank is based on combined eBird and Birdata records, not bird abundance."
+    ],
     "anchor": "start",
-    "fontSize": 18,
+    "fontSize": 20,
     "subtitleFontSize": 12,
-    "subtitleColor": "#5F6B63"
+    "subtitleColor": "#5F6B63",
+    "offset": 17
   },
-  "width": 380,
-  "height": 260,
+  "width": 700,
+  "height": 390,
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
-    "format": {"type": "csv", "parse": {"year": "number", "record_rank": "number"}}
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "year": "number",
+        "abs_state_code": "number",
+        "longitude": "number",
+        "latitude": "number",
+        "ebird_records": "number",
+        "birdata_records": "number",
+        "total_records": "number",
+        "birdata_share": "number",
+        "record_rank": "number"
+      }
+    }
   },
-  "transform": [
-    {"filter": "indexof(['QLD','NSW','VIC','WA','SA'], datum.state_code) >= 0"}
+  "params": [
+    {
+      "name": "highlight_state",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "name": "Highlight state: ",
+        "options": [
+          "All",
+          "NSW",
+          "VIC",
+          "QLD",
+          "WA",
+          "SA",
+          "TAS",
+          "NT",
+          "ACT"
+        ],
+        "labels": [
+          "All states and territories",
+          "New South Wales",
+          "Victoria",
+          "Queensland",
+          "Western Australia",
+          "South Australia",
+          "Tasmania",
+          "Northern Territory",
+          "Australian Capital Territory"
+        ]
+      }
+    }
   ],
-  "mark": {"type": "line", "point": {"filled": true, "size": 55}, "strokeWidth": 2.5},
   "encoding": {
-    "x": {"field": "year", "type": "ordinal", "title": null},
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "domain": [
+          2018,
+          2024.8
+        ],
+        "nice": false
+      },
+      "axis": {
+        "values": [
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024
+        ],
+        "format": "d",
+        "labelAngle": 0,
+        "labelPadding": 9,
+        "tickSize": 0,
+        "domain": false,
+        "grid": false
+      }
+    },
     "y": {
       "field": "record_rank",
       "type": "quantitative",
-      "title": "Rank (out of 8 states/territories)",
-      "scale": {"domain": [1, 8], "reverse": true},
-      "axis": {"tickMinStep": 1}
+      "title": "Rank by combined records",
+      "scale": {
+        "domain": [
+          8.5,
+          0.5
+        ],
+        "nice": false
+      },
+      "axis": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "labelExpr": "'Rank ' + datum.value",
+        "grid": true,
+        "gridColor": "#DDE5DF",
+        "gridWidth": 1,
+        "tickSize": 0,
+        "domain": false,
+        "titlePadding": 14
+      }
     },
     "color": {
       "field": "state_code",
       "type": "nominal",
-      "title": null,
+      "title": "State or territory",
       "scale": {
-        "domain": ["QLD", "NSW", "VIC", "WA", "SA"],
-        "range": ["#3E7856", "#3B6FA0", "#E49A3A", "#D9B44A", "#8F7CA8"]
+        "domain": [
+          "NSW",
+          "VIC",
+          "QLD",
+          "WA",
+          "SA",
+          "TAS",
+          "NT",
+          "ACT"
+        ],
+        "range": [
+          "#547FA3",
+          "#3E7856",
+          "#D7A438",
+          "#8A6FA8",
+          "#D97955",
+          "#4F9A95",
+          "#9A7051",
+          "#7F8983"
+        ]
       },
-      "legend": {"orient": "right"}
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "columns": 8,
+        "symbolType": "stroke",
+        "symbolStrokeWidth": 4,
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "offset": 15
+      }
+    },
+    "opacity": {
+      "condition": {
+        "test": "highlight_state === 'All' || datum.state_code === highlight_state",
+        "value": 1
+      },
+      "value": 0.12
     },
     "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "year", "type": "ordinal", "title": "Year"},
-      {"field": "record_rank", "type": "quantitative", "title": "Rank"}
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State or territory"
+      },
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "record_rank",
+        "type": "quantitative",
+        "title": "Record rank",
+        "format": ".0f"
+      },
+      {
+        "field": "total_records",
+        "type": "quantitative",
+        "title": "Combined records",
+        "format": ","
+      },
+      {
+        "field": "ebird_records",
+        "type": "quantitative",
+        "title": "eBird records",
+        "format": ","
+      },
+      {
+        "field": "birdata_records",
+        "type": "quantitative",
+        "title": "Birdata records",
+        "format": ","
+      }
     ]
   },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "detail": {
+          "field": "state_code",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 250,
+        "stroke": "#FFFEF8",
+        "strokeWidth": 1.5
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "text": {
+          "field": "record_rank",
+          "type": "quantitative",
+          "format": ".0f"
+        },
+        "color": {
+          "value": "#FFFFFF"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.year === 2024"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 13,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "state_code",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
   "config": {
     "background": "#FFFEF8",
     "font": "Arial",
-    "view": {"stroke": null},
-    "axis": {"gridColor": "#E3E8E2", "domain": false}
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A",
+      "titleFontWeight": "normal",
+      "labelFontSize": 11,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#34443A",
+      "titleColor": "#34443A"
+    }
   }
 }

@@ -114,7 +114,7 @@
         "y2": {
           "value": 340
         },
-        "color": {
+        "fill": {
           "field": "colour",
           "type": "nominal",
           "scale": null,
@@ -224,7 +224,8 @@
           "scale": {
             "domain": [0.5, 12.5],
             "nice": false
-          }
+          },
+          "axis": null
         },
         "y": {
           "field": "reference",
@@ -375,6 +376,14 @@
       }
     }
   ],
+  "resolve": {
+    "scale": {
+      "x": "independent"
+    },
+    "axis": {
+      "x": "independent"
+    }
+  },
   "config": {
     "background": "#FFFEF8",
     "font": "Arial",
