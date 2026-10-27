@@ -43,7 +43,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/Australia_States_ASGS2021_Simplified.topojson",
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/Australia_States_ASGS2021_Simplified_Fixed.topojson",
         "format": {
           "type": "topojson",
           "feature": "australia_states"

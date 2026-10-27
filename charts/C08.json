@@ -103,7 +103,7 @@
           "value": 0
         },
         "y2": {
-          "value": 340
+          "value": 390
         },
         "fill": {
           "field": "colour",
@@ -196,53 +196,6 @@
             ],
             "nice": false
           }
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "reference": 0.083333,
-            "label": "Even monthly share: 8.3%"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "bottom",
-        "dx": -4,
-        "dy": -4,
-        "fontSize": 11,
-        "color": "#68736C"
-      },
-      "encoding": {
-        "x": {
-          "datum": 12.5,
-          "type": "quantitative",
-          "scale": {
-            "domain": [
-              0.5,
-              12.5
-            ],
-            "nice": false
-          },
-          "axis": null
-        },
-        "y": {
-          "field": "reference",
-          "type": "quantitative",
-          "scale": {
-            "domain": [
-              0.05,
-              0.13
-            ],
-            "nice": false
-          }
-        },
-        "text": {
-          "field": "label"
         }
       }
     },
@@ -387,6 +340,103 @@
             "format": ","
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "reference": 0.083333,
+            "label": "Even share: 8.3%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 0,
+        "dy": -4,
+        "fontSize": 11,
+        "color": "#FFFEF8",
+        "stroke": "#FFFEF8",
+        "strokeWidth": 4,
+        "strokeJoin": "round"
+      },
+      "encoding": {
+        "x": {
+          "datum": 5.6,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0.5,
+              12.5
+            ],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "reference",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0.05,
+              0.13
+            ],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "reference": 0.083333,
+            "label": "Even share: 8.3%"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 0,
+        "dy": -4,
+        "fontSize": 11,
+        "color": "#4F5A53"
+      },
+      "encoding": {
+        "x": {
+          "datum": 5.6,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0.5,
+              12.5
+            ],
+            "nice": false
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "reference",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0.05,
+              0.13
+            ],
+            "nice": false
+          }
+        },
+        "text": {
+          "field": "label"
+        }
       }
     }
   ],

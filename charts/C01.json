@@ -46,7 +46,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/Australia_States_ASGS2021_Simplified.topojson",
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/Australia_States_ASGS2021_Simplified_Fixed.topojson",
         "format": {
           "type": "topojson",
           "feature": "australia_states"
@@ -105,11 +105,12 @@
           "type": "quantitative",
           "title": "Number of records",
           "scale": {
+            "type": "linear",
+            "zero": true,
             "range": [
-              100,
+              0,
               4200
-            ],
-            "zero": true
+            ]
           },
           "legend": {
             "orient": "right",
@@ -117,7 +118,10 @@
             "titleFontWeight": "normal",
             "title": "Records",
             "titleLimit": 120,
-            "labelLimit": 80
+            "labelLimit": 80,
+            "values": {
+              "expr": "source_select === 'BirdLife Birdata' ? [50000, 100000, 200000] : [500000, 1000000, 2500000]"
+            }
           }
         },
         "tooltip": [
@@ -166,21 +170,110 @@
           "parse": {
             "year": "number",
             "longitude": "number",
-            "latitude": "number"
+            "latitude": "number",
+            "ebird_records": "number",
+            "birdata_records": "number",
+            "total_records": "number",
+            "birdata_share": "number"
           }
         }
       },
       "transform": [
         {
           "filter": "datum.year === year_select"
+        },
+        {
+          "calculate": "source_select === 'eBird Australia' ? datum.ebird_records : source_select === 'BirdLife Birdata' ? datum.birdata_records : datum.total_records",
+          "as": "selected_records"
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "selected_records",
+              "as": "max_records"
+            }
+          ]
+        },
+        {
+          "calculate": "datum.selected_records / datum.max_records",
+          "as": "relative_size"
+        },
+        {
+          "filter": "datum.relative_size >= 0.3"
         }
       ],
       "mark": {
         "type": "text",
-        "dy": -16,
+        "dy": 0,
         "fontSize": 11,
         "fontWeight": "bold",
-        "color": "#34443A"
+        "color": "#FFFFFF",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state_code",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "longitude": "number",
+            "latitude": "number",
+            "ebird_records": "number",
+            "birdata_records": "number",
+            "total_records": "number",
+            "birdata_share": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.year === year_select"
+        },
+        {
+          "calculate": "source_select === 'eBird Australia' ? datum.ebird_records : source_select === 'BirdLife Birdata' ? datum.birdata_records : datum.total_records",
+          "as": "selected_records"
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "selected_records",
+              "as": "max_records"
+            }
+          ]
+        },
+        {
+          "calculate": "datum.selected_records / datum.max_records",
+          "as": "relative_size"
+        },
+        {
+          "filter": "datum.relative_size < 0.3"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -24,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#34443A",
+        "baseline": "middle"
       },
       "encoding": {
         "longitude": {
