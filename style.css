@@ -75,7 +75,7 @@ h1 span {
 }
 
 .hero-copy {
-  max-width: 700px;
+  max-width: 58ch;
   margin-bottom: 1.8rem;
   color: var(--muted);
   font-size: clamp(1.05rem, 2vw, 1.3rem);
@@ -152,7 +152,7 @@ h1 span {
 }
 
 main {
-  width: min(1180px, calc(100% - 2rem));
+  width: min(1320px, calc(100% - 2rem));
   margin: 0 auto;
 }
 
@@ -191,7 +191,7 @@ main {
 }
 
 .section-heading p:last-child {
-  max-width: 700px;
+  max-width: 58ch;
   margin-bottom: 0;
   color: var(--muted);
 }
@@ -217,6 +217,7 @@ main {
 }
 
 .section-insight p {
+  max-width: 58ch;
   margin: 0;
   color: #42544a;
   font-size: 1rem;
@@ -225,7 +226,7 @@ main {
 .chart-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 1.75rem;
   margin-bottom: 1.5rem;
 }
 
@@ -258,8 +259,21 @@ main {
   height: auto;
 }
 
+/*
+ * Vega keeps the pixel dimensions declared in each JSON specification.
+ * These limits let charts use the available card space while keeping them
+ * comfortably readable when the layout changes to one column.
+ */
+.chart-grid .chart-host svg {
+  width: min(100%, 660px);
+}
+
+.chart-card-wide .chart-host svg {
+  width: min(100%, 1040px);
+}
+
 .chart-host .vega-bindings {
-  width: min(100%, 760px);
+  width: min(100%, 1040px);
   margin-inline: auto;
 }
 
@@ -303,12 +317,13 @@ main {
 }
 
 .takeaway p {
+  max-width: 58ch;
   margin-bottom: 0;
   color: var(--muted);
 }
 
 .site-footer {
-  width: min(1180px, calc(100% - 2rem));
+  width: min(1320px, calc(100% - 2rem));
   margin: 4rem auto 0;
   padding: 2rem 0 3rem;
   border-top: 1px solid var(--line);
@@ -325,8 +340,12 @@ main {
 }
 
 .site-footer p {
-  max-width: 940px;
+  max-width: 58ch;
   margin-bottom: 0.55rem;
+}
+
+.source-list li {
+  max-width: 58ch;
 }
 
 .footer-grid {
