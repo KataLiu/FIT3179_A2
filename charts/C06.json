@@ -1,22 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Do the two citizen-science projects record the same mix of birds?",
-    "subtitle": [
-      "Birdata's sample contains a larger share of passerines, while eBird contains more waterbirds.",
-      "Each column represents 2,560 matched sample records; percentages are not population estimates."
-    ],
-    "anchor": "start",
-    "fontSize": 22,
-    "subtitleFontSize": 13,
-    "subtitleColor": "#5F6B63",
-    "offset": 18,
-    "font": "Fraunces",
-    "subtitleFont": "Source Sans 3",
-    "subtitleLineHeight": 17
-  },
-  "width": 560,
-  "height": 450,
+  "width": 580,
+  "height": 405,
   "data": {
     "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C06_CompositionBySource_Mosaic.csv",
     "format": {

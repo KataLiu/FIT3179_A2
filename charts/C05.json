@@ -1,22 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Which bird groups dominate the samples?",
-    "subtitle": [
-      "Passerines account for more than half of the 5,120 records in the matched samples.",
-      "Area represents each bird group's share of sampled citizen-science records."
-    ],
-    "anchor": "start",
-    "fontSize": 22,
-    "subtitleFontSize": 13,
-    "subtitleColor": "#5F6B63",
-    "offset": 16,
-    "font": "Fraunces",
-    "subtitleFont": "Source Sans 3",
-    "subtitleLineHeight": 17
-  },
-  "width": 560,
-  "height": 400,
+  "width": 580,
+  "height": 440,
   "data": {
     "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C05_TaxonomicComposition_Treemap.csv",
     "format": {

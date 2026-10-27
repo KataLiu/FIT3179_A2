@@ -1,21 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "When do Australians report birds?",
-    "subtitle": [
-      "Monthly citizen-science records reveal seasonal patterns in observation activity.",
-      "Lighter cells show fewer submitted records; darker cells show more."
-    ],
-    "anchor": "start",
-    "fontSize": 22,
-    "subtitleFontSize": 13,
-    "subtitleColor": "#5F6B63",
-    "offset": 16,
-    "font": "Fraunces",
-    "subtitleFont": "Source Sans 3",
-    "subtitleLineHeight": 17
-  },
-  "width": 520,
+  "width": 484,
   "height": 370,
   "background": "#FFFEF8",
   "params": [

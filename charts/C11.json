@@ -1,20 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "What did the community contribute in 2025?",
-    "subtitle": [
-      "The 2025 Aussie Bird Count turned thousands of individual observations into a nationwide wildlife dataset.",
-      "Australian Magpie was the most counted species nationally."
-    ],
-    "anchor": "start",
-    "fontSize": 22,
-    "subtitleFontSize": 13,
-    "subtitleColor": "#5F6B63",
-    "offset": 18,
-    "font": "Fraunces",
-    "subtitleFont": "Source Sans 3",
-    "subtitleLineHeight": 17
-  },
   "data": {
     "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C10_C11_AussieBirdCount_Confirmed_2023_2025.csv",
     "format": {

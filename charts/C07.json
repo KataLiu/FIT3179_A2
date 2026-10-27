@@ -1,30 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Where does BirdLife Australia's Birdata contribute more records?",
-    "subtitle": [
-      "Birdata is BirdLife Australia's national platform for submitting bird observations.",
-      "Colour shows Birdata's share of combined Birdata and eBird records in each state or territory.",
-      "The percentage reflects reporting activity, not bird abundance."
-    ],
-    "anchor": "start",
-    "fontSize": 22,
-    "subtitleFontSize": 13,
-    "subtitleColor": "#5F6B63",
-    "offset": 17,
-    "font": "Fraunces",
-    "subtitleFont": "Source Sans 3",
-    "subtitleLineHeight": 17
-  },
-  "width": 800,
-  "height": 430,
+  "width": 820,
+  "height": 570,
   "projection": {
     "type": "mercator",
     "center": [
       134,
-      -28
+      -27.5
     ],
-    "scale": 570
+    "scale": 800
   },
   "params": [
     {

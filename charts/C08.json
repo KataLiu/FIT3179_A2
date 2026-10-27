@@ -1,22 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "When are bird observations reported?",
-    "subtitle": [
-      "Monthly share of each platform's annual records reveals seasonal reporting patterns.",
-      "A higher percentage means that more of that year's observations were submitted in that month."
-    ],
-    "anchor": "start",
-    "fontSize": 22,
-    "subtitleFontSize": 13,
-    "subtitleColor": "#5F6B63",
-    "offset": 17,
-    "font": "Fraunces",
-    "subtitleFont": "Source Sans 3",
-    "subtitleLineHeight": 17
-  },
-  "width": 560,
-  "height": 380,
+  "width": 535,
+  "height": 390,
   "params": [
     {
       "name": "selected_year",

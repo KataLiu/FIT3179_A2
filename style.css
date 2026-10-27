@@ -25,6 +25,7 @@ body {
     radial-gradient(circle at 12% 7%, rgba(216, 230, 211, 0.55), transparent 25rem),
     var(--paper);
   font-family: "Source Sans 3", "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
   line-height: 1.55;
 }
 
@@ -78,7 +79,7 @@ h1 span {
   max-width: 58ch;
   margin-bottom: 1.8rem;
   color: var(--muted);
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-size: clamp(1.0625rem, 2vw, 1.3rem);
 }
 
 .hero-facts {
@@ -238,7 +239,6 @@ main {
   max-width: 58ch;
   margin: 0;
   color: #42544a;
-  font-size: 1rem;
 }
 
 .chart-grid {
@@ -246,12 +246,12 @@ main {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
   margin-bottom: 1.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .chart-card {
   min-width: 0;
-  padding: clamp(0.75rem, 2vw, 1.35rem);
+  padding: 1.6rem 1.75rem 1.5rem;
   overflow: hidden;
   border: 1px solid rgba(62, 120, 86, 0.14);
   border-radius: 1.15rem;
@@ -261,6 +261,27 @@ main {
 
 .chart-card-wide {
   margin-bottom: 1.5rem;
+}
+
+.chart-heading {
+  margin-bottom: 1.25rem;
+}
+
+.chart-heading h3 {
+  margin: 0 0 0.4rem;
+  color: var(--ink);
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.chart-heading p {
+  max-width: 68ch;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .chart-card .chart-host.vega-embed,
@@ -279,20 +300,11 @@ main {
 }
 
 /*
- * Vega keeps the pixel dimensions declared in each JSON specification.
- * These limits let charts use the available card space while keeping them
- * comfortably readable when the layout changes to one column.
+ * Charts render at the pixel size declared in each JSON specification, so
+ * every chart shares the same text sizes. They only shrink on narrow screens.
  */
-.chart-grid .chart-host svg {
-  width: min(100%, 800px);
-}
-
-.chart-card-wide .chart-host svg {
-  width: min(100%, 1040px);
-}
-
 .chart-host .vega-bindings {
-  width: min(100%, 1040px);
+  width: 100%;
   margin-inline: auto;
 }
 
@@ -347,7 +359,6 @@ main {
   padding: 2rem 0 3rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.92rem;
 }
 
 .site-footer h2 {

@@ -1,20 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "How large is Australia's annual bird-count community?",
-    "subtitle": [
-      "Each square represents approximately 2,000 participants; labels retain the reported totals.",
-      "Only the three years confirmed in BirdLife Australia primary sources are shown."
-    ],
-    "anchor": "start",
-    "font": "Fraunces",
-    "fontSize": 22,
-    "subtitleFont": "Source Sans 3",
-    "subtitleFontSize": 13,
-    "subtitleLineHeight": 17,
-    "subtitleColor": "#5F6B63",
-    "offset": 18
-  },
   "data": {
     "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C10_C11_AussieBirdCount_Confirmed_2023_2025.csv",
     "format": {
@@ -79,9 +64,9 @@
       }
     }
   },
-  "spacing": 18,
+  "spacing": 40,
   "spec": {
-    "width": 270,
+    "width": 300,
     "height": 165,
     "layer": [
       {
