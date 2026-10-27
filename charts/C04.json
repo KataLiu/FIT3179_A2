@@ -115,11 +115,14 @@
             "direction": "vertical",
             "symbolType": "circle",
             "symbolSize": 80,
-            "labelFontSize": 11,
-            "titleFontSize": 13,
+            "labelFontSize": 13,
+            "titleFontSize": 14,
             "labelExpr": "datum.label === 'Australian Magpie' ? 'Magpie' : datum.label === 'Rainbow Lorikeet' ? 'Lorikeet' : 'Kookaburra'",
             "labelLimit": 200,
-            "columnPadding": 24
+            "columnPadding": 24,
+            "values": {
+              "expr": "species_select === 'All three selected birds' ? ['Australian Magpie', 'Rainbow Lorikeet', 'Laughing Kookaburra'] : [species_select]"
+            }
           }
         },
         "tooltip": [
@@ -197,22 +200,22 @@
       "padding": 8,
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "axis": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

@@ -206,7 +206,7 @@
       "mark": {
         "type": "text",
         "dy": 0,
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "bold",
         "color": "#FFFFFF",
         "baseline": "middle"
@@ -270,7 +270,7 @@
       "mark": {
         "type": "text",
         "dy": -24,
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "bold",
         "color": "#34443A",
         "baseline": "middle"
@@ -422,22 +422,22 @@
       "padding": 10,
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "axis": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

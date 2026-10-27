@@ -58,7 +58,7 @@
         "labelOrient": "bottom",
         "labelPadding": 10,
         "labelFont": "Source Sans 3",
-        "labelFontSize": 12,
+        "labelFontSize": 13,
         "labelFontWeight": "bold",
         "labelColor": "#34443A"
       }
@@ -143,20 +143,20 @@
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
     "axis": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
     "legend": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     }

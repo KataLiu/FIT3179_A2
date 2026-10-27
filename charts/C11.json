@@ -64,7 +64,7 @@
   "spacing": 14,
   "spec": {
     "width": 235,
-    "height": 260,
+    "height": 220,
     "layer": [
       {
         "mark": {
@@ -146,7 +146,7 @@
       {
         "mark": {
           "type": "text",
-          "fontSize": 11,
+          "fontSize": 13,
           "fontWeight": "bold",
           "color": "#68736C",
           "baseline": "middle"
@@ -167,7 +167,7 @@
       {
         "mark": {
           "type": "text",
-          "fontSize": 25,
+          "fontSize": 32,
           "fontWeight": "bold",
           "color": "#26372E",
           "baseline": "middle"
@@ -188,7 +188,7 @@
       {
         "mark": {
           "type": "text",
-          "fontSize": 13,
+          "fontSize": 16,
           "fontWeight": "bold",
           "color": "#34443A",
           "baseline": "middle"
@@ -209,7 +209,7 @@
       {
         "mark": {
           "type": "text",
-          "fontSize": 11,
+          "fontSize": 14,
           "color": "#5F6B63",
           "baseline": "middle"
         },
@@ -237,22 +237,22 @@
     "axis": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
     "legend": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

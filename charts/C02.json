@@ -73,7 +73,7 @@
             "direction": "horizontal",
             "symbolType": "circle",
             "symbolSize": 160,
-            "labelFontSize": 12,
+            "labelFontSize": 13,
             "offset": 8,
             "labelExpr": "datum.label === 'eBird Australia' ? 'eBird' : 'Birdata'",
             "labelLimit": 100
@@ -117,7 +117,7 @@
       "mark": {
         "type": "text",
         "font": "Source Sans 3",
-        "fontSize": 12.5,
+        "fontSize": 13,
         "fontWeight": 600,
         "color": "#7A5A12",
         "align": "right",
@@ -149,8 +149,8 @@
       "labelColor": "#34443A",
       "titleColor": "#34443A",
       "titleFontWeight": "normal",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3"
     },
@@ -159,16 +159,16 @@
       "titleColor": "#34443A",
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

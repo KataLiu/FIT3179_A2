@@ -94,7 +94,7 @@
             "columns": 5,
             "symbolType": "square",
             "symbolSize": 150,
-            "labelFontSize": 12,
+            "labelFontSize": 13,
             "offset": 40
           }
         },
@@ -183,7 +183,7 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 12,
+        "fontSize": 13,
         "dy": 10,
         "color": "#26372E",
         "baseline": "middle"
@@ -296,8 +296,8 @@
       "labelColor": "#34443A",
       "titleColor": "#34443A",
       "titleFontWeight": "normal",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3"
     },
@@ -306,16 +306,16 @@
       "titleColor": "#34443A",
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

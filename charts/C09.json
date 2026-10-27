@@ -84,7 +84,7 @@
     "y": {
       "field": "record_rank",
       "type": "quantitative",
-      "title": "Rank by combined records",
+      "title": "Rank (1 = most records)",
       "scale": {
         "domain": [
           8.5,
@@ -103,13 +103,13 @@
           7,
           8
         ],
-        "labelExpr": "datum.value",
         "grid": true,
         "gridColor": "#DDE5DF",
         "gridWidth": 1,
         "tickSize": 0,
         "domain": false,
-        "titlePadding": 14
+        "titlePadding": 14,
+        "labels": false
       }
     },
     "color": {
@@ -200,7 +200,7 @@
     {
       "mark": {
         "type": "circle",
-        "size": 250,
+        "size": 360,
         "stroke": "#FFFEF8",
         "strokeWidth": 1.5
       }
@@ -208,7 +208,7 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "bold",
         "baseline": "middle"
       },
@@ -234,7 +234,7 @@
         "align": "left",
         "baseline": "middle",
         "dx": 13,
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "bold"
       },
       "encoding": {
@@ -257,7 +257,7 @@
       "mark": {
         "type": "text",
         "font": "Source Sans 3",
-        "fontSize": 12.5,
+        "fontSize": 13,
         "fontWeight": 600,
         "color": "#7A5A12",
         "baseline": "middle"
@@ -294,8 +294,8 @@
       "labelColor": "#34443A",
       "titleColor": "#34443A",
       "titleFontWeight": "normal",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3"
     },
@@ -304,16 +304,16 @@
       "titleColor": "#34443A",
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

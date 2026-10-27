@@ -109,8 +109,8 @@
             "format": ".0%",
             "gradientLength": 230,
             "gradientThickness": 14,
-            "titleFontSize": 12,
-            "labelFontSize": 11,
+            "titleFontSize": 14,
+            "labelFontSize": 13,
             "offset": 12,
             "title": "Share",
             "titleLimit": 80,
@@ -187,7 +187,7 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "bold",
         "color": "#26372E"
       },
@@ -294,22 +294,22 @@
       "titleColor": "#34443A",
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "axis": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

@@ -86,8 +86,8 @@
             "labelExpr": "datum.value >= 1000000 ? format(datum.value / 1000000, '.1f') + 'M' : format(datum.value / 1000, '.0f') + 'k'",
             "symbolFillColor": "#8EBB91",
             "symbolStrokeColor": "#FFFFFF",
-            "titleFontSize": 12,
-            "labelFontSize": 11,
+            "titleFontSize": 14,
+            "labelFontSize": 13,
             "offset": 14,
             "title": "Records",
             "titleLimit": 120,
@@ -117,8 +117,8 @@
             "format": ".0%",
             "gradientLength": 160,
             "gradientThickness": 14,
-            "titleFontSize": 12,
-            "labelFontSize": 11,
+            "titleFontSize": 14,
+            "labelFontSize": 13,
             "offset": 14,
             "title": "Share",
             "titleLimit": 80,
@@ -215,7 +215,7 @@
       "mark": {
         "type": "text",
         "dy": 10,
-        "fontSize": 11,
+        "fontSize": 13,
         "fontWeight": "bold",
         "baseline": "middle"
       },
@@ -310,22 +310,22 @@
       "titleColor": "#34443A",
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "axis": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }

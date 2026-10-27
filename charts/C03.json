@@ -207,10 +207,10 @@
       "mark": {
         "type": "text",
         "font": "Source Sans 3",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": 700,
         "color": "#FFFFFF",
-        "lineHeight": 12,
+        "lineHeight": 13,
         "baseline": "middle"
       },
       "encoding": {
@@ -253,8 +253,8 @@
       "grid": false,
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     },
     "legend": {
       "labelColor": "#34443A",
@@ -262,16 +262,16 @@
       "padding": 10,
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13,
+      "labelFontSize": 13,
+      "titleFontSize": 14,
       "titleLimit": 180,
       "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
-      "labelFontSize": 12,
-      "titleFontSize": 13
+      "labelFontSize": 13,
+      "titleFontSize": 14
     }
   }
 }
