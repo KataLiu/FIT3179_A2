@@ -157,16 +157,33 @@ main {
 }
 
 .story-section {
-  padding: 5.5rem 0 1.5rem;
+  padding: 4rem 0 1.25rem;
   scroll-margin-top: 4rem;
 }
 
 .section-heading {
   display: grid;
-  grid-template-columns: 4.8rem minmax(0, 760px);
-  gap: 1.2rem;
-  align-items: start;
+  grid-template-columns: 4.8rem minmax(0, 760px) minmax(150px, 230px);
+  gap: 1.35rem;
+  align-items: center;
   margin: 0 0 2rem;
+}
+
+.section-bird {
+  justify-self: end;
+  width: min(100%, 220px);
+  max-height: 150px;
+  object-fit: contain;
+  opacity: 0.88;
+  filter: saturate(0.72) contrast(0.96);
+}
+
+.section-bird-magpie {
+  transform: rotate(-2deg);
+}
+
+.section-bird-flipped {
+  transform: scaleX(-1) rotate(-2deg);
 }
 
 .section-number {
@@ -198,7 +215,8 @@ main {
 
 .section-insight {
   display: grid;
-  grid-template-columns: 7.5rem minmax(0, 760px);
+  width: min(840px, calc(100% - 6rem));
+  grid-template-columns: 7.5rem minmax(0, 58ch);
   gap: 1rem;
   align-items: start;
   margin: -0.35rem 0 1.75rem 6rem;
@@ -228,6 +246,7 @@ main {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.75rem;
   margin-bottom: 1.5rem;
+  align-items: start;
 }
 
 .chart-card {
@@ -265,7 +284,7 @@ main {
  * comfortably readable when the layout changes to one column.
  */
 .chart-grid .chart-host svg {
-  width: min(100%, 660px);
+  width: min(100%, 720px);
 }
 
 .chart-card-wide .chart-host svg {
@@ -377,6 +396,14 @@ main {
 }
 
 @media (max-width: 1080px) {
+  .section-heading {
+    grid-template-columns: 4.8rem minmax(0, 1fr);
+  }
+
+  .section-bird {
+    display: none;
+  }
+
   .chart-grid {
     grid-template-columns: 1fr;
   }

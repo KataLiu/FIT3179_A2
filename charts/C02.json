@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Citizen-science bird records, 2018–2024",
+    "text": "Citizen-science bird records, 2018\u20132024",
     "subtitle": [
       "eBird records grew strongly, while Birdata remained around one million records per year.",
       "Record totals indicate reporting activity, not bird abundance."
@@ -15,8 +15,8 @@
     "subtitleFont": "Source Sans 3",
     "subtitleLineHeight": 17
   },
-  "width": 470,
-  "height": 320,
+  "width": 580,
+  "height": 395,
   "data": {
     "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C02_AnnualRecords_2018_2024.csv",
     "format": {
@@ -87,7 +87,9 @@
         "symbolType": "circle",
         "symbolSize": 160,
         "labelFontSize": 12,
-        "offset": 8
+        "offset": 8,
+        "labelExpr": "datum.label === 'eBird Australia' ? 'eBird' : 'Birdata'",
+        "labelLimit": 100
       }
     },
     "tooltip": [
@@ -130,7 +132,9 @@
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
       "labelFontSize": 12,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "titleLimit": 180,
+      "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",

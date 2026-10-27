@@ -4,7 +4,7 @@
     "text": "Where are selected birds reported?",
     "subtitle": [
       "Choose one species or compare all three; colour identifies species when they appear together.",
-      "Points are verified sample locations from 2018–2024 and do not measure bird abundance."
+      "Points are verified sample locations from 2018\u20132024 and do not measure bird abundance."
     ],
     "anchor": "start",
     "fontSize": 22,
@@ -15,8 +15,8 @@
     "subtitleFont": "Source Sans 3",
     "subtitleLineHeight": 17
   },
-  "width": 760,
-  "height": 450,
+  "width": 840,
+  "height": 470,
   "background": "#FFFEF8",
   "projection": {
     "type": "mercator",
@@ -129,9 +129,13 @@
             "orient": "top",
             "direction": "horizontal",
             "symbolType": "circle",
-            "symbolSize": 110,
-            "labelFontSize": 12,
-            "titleFontSize": 13
+            "symbolSize": 80,
+            "labelFontSize": 11,
+            "titleFontSize": 13,
+            "labelExpr": "datum.label === 'Australian Magpie' ? 'Magpie' : datum.label === 'Rainbow Lorikeet' ? 'Lorikeet' : 'Kookaburra'",
+            "labelLimit": 200,
+            "columns": 3,
+            "columnPadding": 24
           }
         },
         "tooltip": [
@@ -176,7 +180,9 @@
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
       "labelFontSize": 12,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "titleLimit": 180,
+      "labelLimit": 150
     },
     "axis": {
       "labelFont": "Source Sans 3",

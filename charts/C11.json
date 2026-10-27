@@ -78,8 +78,8 @@
   },
   "spacing": 14,
   "spec": {
-    "width": 115,
-    "height": 225,
+    "width": 135,
+    "height": 245,
     "layer": [
       {
         "mark": {
@@ -259,7 +259,9 @@
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
       "labelFontSize": 12,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "titleLimit": 180,
+      "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",

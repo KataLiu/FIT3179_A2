@@ -15,8 +15,8 @@
     "subtitleFont": "Source Sans 3",
     "subtitleLineHeight": 17
   },
-  "width": 470,
-  "height": 340,
+  "width": 560,
+  "height": 380,
   "params": [
     {
       "name": "selected_year",
@@ -359,7 +359,9 @@
             "symbolType": "circle",
             "symbolSize": 160,
             "labelFontSize": 12,
-            "offset": 8
+            "offset": 8,
+            "labelExpr": "datum.label === 'eBird Australia' ? 'eBird' : 'Birdata'",
+            "labelLimit": 100
           }
         },
         "detail": {
@@ -432,7 +434,9 @@
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
       "labelFontSize": 12,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "titleLimit": 180,
+      "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",

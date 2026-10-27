@@ -15,8 +15,8 @@
     "subtitleFont": "Source Sans 3",
     "subtitleLineHeight": 17
   },
-  "width": 760,
-  "height": 450,
+  "width": 840,
+  "height": 470,
   "background": "#FFFEF8",
   "projection": {
     "type": "mercator",
@@ -129,7 +129,10 @@
           "legend": {
             "orient": "right",
             "format": "~s",
-            "titleFontWeight": "normal"
+            "titleFontWeight": "normal",
+            "title": "Records",
+            "titleLimit": 120,
+            "labelLimit": 80
           }
         },
         "tooltip": [
@@ -223,7 +226,9 @@
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
       "labelFontSize": 12,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "titleLimit": 180,
+      "labelLimit": 150
     },
     "axis": {
       "labelFont": "Source Sans 3",

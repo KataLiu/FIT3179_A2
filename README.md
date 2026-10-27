@@ -41,10 +41,11 @@ Data were accessed on 2 October 2026. Full processing notes and chart-specific l
 - `script.js` — Vega-Lite embedding
 - `charts/` — human-readable Vega-Lite JSON specifications
 - `data/` — processed chart data and geographic boundaries
+- `assets/` — decorative Australian bird illustrations used in section headings
 - `documentation/sketch.pdf` — submitted dashboard sketch
 
 ## Authorship and AI acknowledgement
 
 Visualisation and analysis by **Hanjia Liu**, October 2026.
 
-Generative AI tools, including Claude and OpenAI Codex/ChatGPT, were used for development feedback, code assistance and language refinement. The author checked the data, sources, calculations and final design.
+Generative AI tools, including Claude and OpenAI Codex/ChatGPT, were used for development feedback, code assistance and language refinement. The decorative magpie and lorikeet illustrations were generated with OpenAI image generation. The author checked the data, sources, calculations and final design.

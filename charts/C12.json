@@ -15,8 +15,8 @@
     "subtitleFont": "Source Sans 3",
     "subtitleLineHeight": 17
   },
-  "width": 700,
-  "height": 430,
+  "width": 800,
+  "height": 450,
   "data": {
     "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C12_DorlingCartogram_2024.csv",
     "format": {
@@ -104,7 +104,10 @@
             "symbolStrokeColor": "#FFFFFF",
             "titleFontSize": 12,
             "labelFontSize": 11,
-            "offset": 14
+            "offset": 14,
+            "title": "Records",
+            "titleLimit": 120,
+            "labelLimit": 90
           }
         },
         "color": {
@@ -132,7 +135,10 @@
             "gradientThickness": 14,
             "titleFontSize": 12,
             "labelFontSize": 11,
-            "offset": 14
+            "offset": 14,
+            "title": "Share",
+            "titleLimit": 80,
+            "labelLimit": 90
           }
         },
         "tooltip": [
@@ -281,7 +287,9 @@
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
       "labelFontSize": 12,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "titleLimit": 180,
+      "labelLimit": 150
     },
     "axis": {
       "labelFont": "Source Sans 3",

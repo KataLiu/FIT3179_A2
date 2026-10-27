@@ -81,8 +81,8 @@
   },
   "spacing": 18,
   "spec": {
-    "width": 135,
-    "height": 82,
+    "width": 155,
+    "height": 145,
     "layer": [
       {
         "mark": {
@@ -141,7 +141,7 @@
               "title": "Reported participants"
             },
             {
-              "value": "≈ 2,000 participants",
+              "value": "\u2248 2,000 participants",
               "title": "Each filled square"
             }
           ]
@@ -171,7 +171,9 @@
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
       "labelFontSize": 12,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "titleLimit": 180,
+      "labelLimit": 150
     }
   }
 }

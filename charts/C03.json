@@ -15,7 +15,7 @@
     "subtitleFont": "Source Sans 3",
     "subtitleLineHeight": 17
   },
-  "width": 420,
+  "width": 520,
   "height": 370,
   "background": "#FFFEF8",
   "params": [
@@ -125,7 +125,10 @@
         "orient": "right",
         "format": "~s",
         "gradientLength": 260,
-        "titleFontWeight": "normal"
+        "titleFontWeight": "normal",
+        "title": "Records",
+        "titleLimit": 120,
+        "labelLimit": 80
       }
     },
     "tooltip": [
@@ -168,7 +171,9 @@
       "labelFont": "Source Sans 3",
       "titleFont": "Source Sans 3",
       "labelFontSize": 12,
-      "titleFontSize": 13
+      "titleFontSize": 13,
+      "titleLimit": 180,
+      "labelLimit": 150
     },
     "header": {
       "labelFont": "Source Sans 3",
