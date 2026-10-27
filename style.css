@@ -152,7 +152,7 @@ h1 span {
 }
 
 main {
-  width: min(1320px, calc(100% - 2rem));
+  width: min(1680px, calc(100% - 2rem));
   margin: 0 auto;
 }
 
@@ -244,7 +244,7 @@ main {
 .chart-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.75rem;
+  gap: 1.25rem;
   margin-bottom: 1.5rem;
   align-items: start;
 }
@@ -284,7 +284,7 @@ main {
  * comfortably readable when the layout changes to one column.
  */
 .chart-grid .chart-host svg {
-  width: min(100%, 720px);
+  width: min(100%, 800px);
 }
 
 .chart-card-wide .chart-host svg {
