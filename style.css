@@ -308,6 +308,41 @@ main {
  * Charts render at the pixel size declared in each JSON specification, so
  * every chart shares the same text sizes. They only shrink on narrow screens.
  */
+/*
+ * Full-width map cards: heading and controls in a left column, chart on the
+ * right. The chart host is flattened so its controls can join the left column.
+ */
+.chart-card-split {
+  display: grid;
+  grid-template-columns: clamp(260px, 26%, 340px) minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 2.5rem;
+}
+
+.chart-card-split .chart-heading {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.chart-card-split .chart-host,
+.chart-card-split .chart-host.vega-embed {
+  display: contents;
+}
+
+.chart-card-split .chart-host > svg {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: center;
+  justify-self: center;
+}
+
+.chart-card-split .chart-host .vega-bindings {
+  flex-direction: column;
+  align-items: flex-start;
+  grid-column: 1;
+  grid-row: 2;
+}
+
 /* Chart controls sit above the chart, aligned with the chart heading. */
 .chart-host .vega-bindings {
   display: flex;
@@ -457,6 +492,15 @@ main {
 }
 
 @media (max-width: 1080px) {
+  .chart-card-split {
+    display: block;
+  }
+
+  .chart-card-split .chart-host,
+  .chart-card-split .chart-host.vega-embed {
+    display: flex;
+  }
+
   .section-heading {
     grid-template-columns: 4.8rem minmax(0, 1fr);
   }
