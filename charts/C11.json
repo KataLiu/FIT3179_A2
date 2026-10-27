@@ -7,13 +7,16 @@
       "Australian Magpie was the most counted species nationally."
     ],
     "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
+    "fontSize": 22,
+    "subtitleFontSize": 13,
     "subtitleColor": "#5F6B63",
-    "offset": 18
+    "offset": 18,
+    "font": "Fraunces",
+    "subtitleFont": "Source Sans 3",
+    "subtitleLineHeight": 17
   },
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C10_C11_AussieBirdCount_Confirmed_2023_2025.csv",
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C10_C11_AussieBirdCount_Confirmed_2023_2025.csv",
     "format": {
       "type": "csv",
       "parse": {
@@ -75,7 +78,7 @@
   },
   "spacing": 14,
   "spec": {
-    "width": 160,
+    "width": 115,
     "height": 225,
     "layer": [
       {
@@ -221,7 +224,7 @@
       {
         "mark": {
           "type": "text",
-          "fontSize": 10,
+          "fontSize": 11,
           "color": "#5F6B63",
           "baseline": "middle"
         },
@@ -242,9 +245,27 @@
   },
   "config": {
     "background": "#FFFEF8",
-    "font": "Arial",
+    "font": "Source Sans 3",
     "view": {
       "stroke": null
+    },
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "header": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
     }
   }
 }

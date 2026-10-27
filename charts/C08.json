@@ -7,12 +7,15 @@
       "A higher percentage means that more of that year's observations were submitted in that month."
     ],
     "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
+    "fontSize": 22,
+    "subtitleFontSize": 13,
     "subtitleColor": "#5F6B63",
-    "offset": 17
+    "offset": 17,
+    "font": "Fraunces",
+    "subtitleFont": "Source Sans 3",
+    "subtitleLineHeight": 17
   },
-  "width": 700,
+  "width": 470,
   "height": 340,
   "params": [
     {
@@ -43,7 +46,7 @@
     }
   ],
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C03_C08_MonthlyRecords_2018_2024.csv",
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C03_C08_MonthlyRecords_2018_2024.csv",
     "format": {
       "type": "csv",
       "parse": {
@@ -100,7 +103,10 @@
           "field": "start",
           "type": "quantitative",
           "scale": {
-            "domain": [0.5, 12.5],
+            "domain": [
+              0.5,
+              12.5
+            ],
             "nice": false
           },
           "axis": null
@@ -149,7 +155,7 @@
       },
       "mark": {
         "type": "text",
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": "bold",
         "color": "#68736C",
         "baseline": "top",
@@ -160,7 +166,10 @@
           "field": "position",
           "type": "quantitative",
           "scale": {
-            "domain": [0.5, 12.5],
+            "domain": [
+              0.5,
+              12.5
+            ],
             "nice": false
           },
           "axis": null
@@ -185,7 +194,10 @@
         "type": "rule",
         "stroke": "#7B817D",
         "strokeWidth": 1.2,
-        "strokeDash": [6, 5],
+        "strokeDash": [
+          6,
+          5
+        ],
         "opacity": 0.8
       },
       "encoding": {
@@ -193,7 +205,10 @@
           "field": "reference",
           "type": "quantitative",
           "scale": {
-            "domain": [0.05, 0.13],
+            "domain": [
+              0.05,
+              0.13
+            ],
             "nice": false
           }
         }
@@ -214,7 +229,7 @@
         "baseline": "bottom",
         "dx": -4,
         "dy": -4,
-        "fontSize": 10,
+        "fontSize": 11,
         "color": "#68736C"
       },
       "encoding": {
@@ -222,7 +237,10 @@
           "datum": 12.5,
           "type": "quantitative",
           "scale": {
-            "domain": [0.5, 12.5],
+            "domain": [
+              0.5,
+              12.5
+            ],
             "nice": false
           },
           "axis": null
@@ -231,7 +249,10 @@
           "field": "reference",
           "type": "quantitative",
           "scale": {
-            "domain": [0.05, 0.13],
+            "domain": [
+              0.05,
+              0.13
+            ],
             "nice": false
           }
         },
@@ -262,7 +283,10 @@
           "type": "quantitative",
           "title": null,
           "scale": {
-            "domain": [0.5, 12.5],
+            "domain": [
+              0.5,
+              12.5
+            ],
             "nice": false
           },
           "axis": {
@@ -293,7 +317,10 @@
           "type": "quantitative",
           "title": "Share of annual records",
           "scale": {
-            "domain": [0.05, 0.13],
+            "domain": [
+              0.05,
+              0.13
+            ],
             "nice": false
           },
           "axis": {
@@ -386,7 +413,7 @@
   },
   "config": {
     "background": "#FFFEF8",
-    "font": "Arial",
+    "font": "Source Sans 3",
     "view": {
       "stroke": null
     },
@@ -394,12 +421,24 @@
       "labelColor": "#34443A",
       "titleColor": "#34443A",
       "titleFontWeight": "normal",
-      "labelFontSize": 11,
-      "titleFontSize": 12
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
     },
     "legend": {
       "labelColor": "#34443A",
-      "titleColor": "#34443A"
+      "titleColor": "#34443A",
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "header": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
     }
   }
 }

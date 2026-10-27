@@ -7,15 +7,18 @@
       "Each column represents 2,560 matched sample records; percentages are not population estimates."
     ],
     "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
+    "fontSize": 22,
+    "subtitleFontSize": 13,
     "subtitleColor": "#5F6B63",
-    "offset": 18
+    "offset": 18,
+    "font": "Fraunces",
+    "subtitleFont": "Source Sans 3",
+    "subtitleLineHeight": 17
   },
-  "width": 700,
+  "width": 470,
   "height": 390,
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C06_CompositionBySource_Mosaic.csv",
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C06_CompositionBySource_Mosaic.csv",
     "format": {
       "type": "csv",
       "parse": {
@@ -53,7 +56,10 @@
           "field": "x0",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 100],
+            "domain": [
+              0,
+              100
+            ],
             "nice": false
           },
           "axis": null
@@ -65,7 +71,10 @@
           "field": "y0",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 100],
+            "domain": [
+              0,
+              100
+            ],
             "reverse": true,
             "nice": false
           },
@@ -155,7 +164,10 @@
           "field": "x_center",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 100],
+            "domain": [
+              0,
+              100
+            ],
             "nice": false
           },
           "axis": null
@@ -164,7 +176,10 @@
           "field": "y_center",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 100],
+            "domain": [
+              0,
+              100
+            ],
             "reverse": true,
             "nice": false
           },
@@ -193,7 +208,10 @@
           "field": "x_center",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 100],
+            "domain": [
+              0,
+              100
+            ],
             "nice": false
           },
           "axis": null
@@ -202,7 +220,10 @@
           "field": "y_center",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 100],
+            "domain": [
+              0,
+              100
+            ],
             "reverse": true,
             "nice": false
           },
@@ -234,7 +255,10 @@
           "field": "x_center",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 100],
+            "domain": [
+              0,
+              100
+            ],
             "nice": false
           },
           "axis": null
@@ -250,7 +274,7 @@
   ],
   "config": {
     "background": "#FFFEF8",
-    "font": "Arial",
+    "font": "Source Sans 3",
     "view": {
       "stroke": null
     },
@@ -258,12 +282,24 @@
       "labelColor": "#34443A",
       "titleColor": "#34443A",
       "titleFontWeight": "normal",
-      "labelFontSize": 11,
-      "titleFontSize": 12
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
     },
     "legend": {
       "labelColor": "#34443A",
-      "titleColor": "#34443A"
+      "titleColor": "#34443A",
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "header": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
     }
   }
 }

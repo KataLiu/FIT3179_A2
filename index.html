@@ -8,6 +8,12 @@
       content="An interactive exploration of Australian birdwatching records and citizen-science participation."
     />
     <title>Australia Through Birdwatchers' Eyes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -54,6 +60,15 @@
           </div>
         </header>
 
+        <aside class="section-insight" aria-label="Key finding">
+          <span>Key finding</span>
+          <p>
+            From 2018 to 2024, annual eBird records grew by 136%, while Birdata
+            records grew by 32%. This widening gap reflects platform reporting
+            activity and coverage, not a national increase in bird abundance.
+          </p>
+        </aside>
+
         <article class="chart-card chart-card-wide">
           <div id="chart-c01" class="chart-host" aria-label="State record map"></div>
         </article>
@@ -80,6 +95,15 @@
             </p>
           </div>
         </header>
+
+        <aside class="section-insight" aria-label="Key finding">
+          <span>Key finding</span>
+          <p>
+            Passerines make up 56.2% of the matched sample. The platform mix also
+            differs: waterbirds account for 23.9% of eBird's sample and 17.4% of
+            Birdata's, so neither platform alone provides the complete picture.
+          </p>
+        </aside>
 
         <article class="chart-card chart-card-wide">
           <div id="chart-c04" class="chart-host" aria-label="Selected bird locations map"></div>
@@ -108,6 +132,16 @@
           </div>
         </header>
 
+        <aside class="section-insight" aria-label="Key finding">
+          <span>Key finding</span>
+          <p>
+            October is the clearest reporting peak in both platforms in 2024,
+            contributing 12.3% of eBird records and 11.8% of Birdata records.
+            Geography matters too: Birdata supplies 26.1% of South Australia's
+            combined records, the highest state share that year.
+          </p>
+        </aside>
+
         <article class="chart-card chart-card-wide">
           <div id="chart-c07" class="chart-host" aria-label="Birdata share choropleth"></div>
         </article>
@@ -134,6 +168,15 @@
             </p>
           </div>
         </header>
+
+        <aside class="section-insight" aria-label="Key finding">
+          <span>Key finding</span>
+          <p>
+            In 2025, 63,990 people submitted 153,855 checklists and counted more
+            than five million birds across 621 species. Community participation
+            turns many local observations into a nationwide research resource.
+          </p>
+        </aside>
 
         <div class="chart-grid">
           <article class="chart-card">
@@ -162,9 +205,51 @@
       </section>
     </main>
 
-    <footer>
-      <p><strong>Data sources:</strong> eBird Australia and BirdLife Australia Birdata records accessed through documented citizen-science sources; BirdLife Australia Aussie Bird Count results; ABS ASGS 2021 state boundaries.</p>
-      <p>FIT3179 Data Visualisation 2 · Australia-focused birdwatching study</p>
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <section>
+          <h2>About the data</h2>
+          <p>
+            Core observation comparisons cover 2018–2024, the common verified
+            period used by the processed state, month and species-location files.
+            The 2025 community figures come from BirdLife Australia's confirmed
+            Aussie Bird Count results. Records measure reporting activity rather
+            than bird abundance.
+          </p>
+          <p>
+            National, monthly and state totals are server-computed counts. Species
+            locations and taxonomic composition use matched stratified samples;
+            sample percentages are not population estimates. Data accessed
+            2 October 2026.
+          </p>
+        </section>
+
+        <section>
+          <h2>Sources</h2>
+          <ul class="source-list">
+            <li><a href="https://collections.ala.org.au/public/show/dr2009">eBird Australia via Atlas of Living Australia</a> — CC0 1.0.</li>
+            <li><a href="https://birdata.birdlife.org.au">BirdLife Australia Birdata</a> — CC BY-NC 3.0.</li>
+            <li><a href="https://birdlife.org.au/news/the-2025-aussie-bird-count-results-are-in/">BirdLife Australia, 2025 Aussie Bird Count results</a>.</li>
+            <li><a href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs/edition-3-july-2021-june-2026/access-and-downloads/digital-boundary-files">ABS ASGS 2021 state and territory boundaries</a> — CC BY 4.0.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Authorship</h2>
+          <p>Visualisation and analysis by <strong>Hanjia Liu</strong>, October 2026.</p>
+          <p>
+            Generative AI tools, including Claude and OpenAI Codex/ChatGPT, were
+            used for development feedback, code assistance and language refinement.
+            The author checked the data, sources, calculations and final design.
+          </p>
+          <p class="document-links">
+            <a href="documentation/sketch.pdf">Planning sketch (PDF)</a>
+            <span aria-hidden="true">·</span>
+            <a href="data/00_Processed_Data_README.md">Data processing notes</a>
+          </p>
+          <p>FIT3179 Data Visualisation 2 · Topic 17: Birdwatching</p>
+        </section>
+      </div>
     </footer>
 
     <script src="script.js"></script>

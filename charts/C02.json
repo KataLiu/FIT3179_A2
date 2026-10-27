@@ -7,15 +7,18 @@
       "Record totals indicate reporting activity, not bird abundance."
     ],
     "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
+    "fontSize": 22,
+    "subtitleFontSize": 13,
     "subtitleColor": "#5F6B63",
-    "offset": 15
+    "offset": 15,
+    "font": "Fraunces",
+    "subtitleFont": "Source Sans 3",
+    "subtitleLineHeight": 17
   },
-  "width": 700,
+  "width": 470,
   "height": 320,
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C02_AnnualRecords_2018_2024.csv",
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C02_AnnualRecords_2018_2024.csv",
     "format": {
       "type": "csv",
       "parse": {
@@ -50,7 +53,10 @@
       "type": "quantitative",
       "title": "Records (millions)",
       "scale": {
-        "domain": [0, 9]
+        "domain": [
+          0,
+          9
+        ]
       },
       "axis": {
         "grid": true,
@@ -105,7 +111,7 @@
   },
   "config": {
     "background": "#FFFEF8",
-    "font": "Arial",
+    "font": "Source Sans 3",
     "view": {
       "stroke": null
     },
@@ -113,12 +119,24 @@
       "labelColor": "#34443A",
       "titleColor": "#34443A",
       "titleFontWeight": "normal",
-      "labelFontSize": 11,
-      "titleFontSize": 12
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3"
     },
     "legend": {
       "labelColor": "#34443A",
-      "titleColor": "#34443A"
+      "titleColor": "#34443A",
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "header": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
     }
   }
 }

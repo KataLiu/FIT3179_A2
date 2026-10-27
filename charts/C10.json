@@ -1,226 +1,177 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "How many people join Australia's annual bird count?",
+    "text": "How large is Australia's annual bird-count community?",
     "subtitle": [
-      "More than 63,000 people participated in the 2025 Aussie Bird Count, the highest of these confirmed years.",
-      "Only figures confirmed by BirdLife Australia are shown; the 2024 participant figure was reported as 57,000+."
+      "Each square represents approximately 2,000 participants; labels retain the reported totals.",
+      "Only the three years confirmed in BirdLife Australia primary sources are shown."
     ],
     "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
+    "font": "Fraunces",
+    "fontSize": 22,
+    "subtitleFont": "Source Sans 3",
+    "subtitleFontSize": 13,
+    "subtitleLineHeight": 17,
     "subtitleColor": "#5F6B63",
     "offset": 18
   },
-  "width": 700,
-  "height": 350,
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C10_C11_AussieBirdCount_Confirmed_2023_2025.csv",
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C10_C11_AussieBirdCount_Confirmed_2023_2025.csv",
     "format": {
       "type": "csv",
       "parse": {
         "year": "number",
-        "participants": "number",
-        "birds_counted": "number",
-        "species_recorded": "number",
-        "checklists_submitted": "number"
+        "participants": "number"
       }
     }
   },
   "transform": [
     {
-      "calculate": "format(datum.birds_counted / 1000000, '.1f') + 'M birds counted'",
-      "as": "birds_counted_label"
+      "calculate": "datum.year + ': ' + datum.participant_label + ' people'",
+      "as": "year_label"
+    },
+    {
+      "calculate": "sequence(1, 36)",
+      "as": "unit_list"
+    },
+    {
+      "flatten": [
+        "unit_list"
+      ],
+      "as": [
+        "unit"
+      ]
+    },
+    {
+      "calculate": "(datum.unit - 1) % 9",
+      "as": "grid_column"
+    },
+    {
+      "calculate": "floor((datum.unit - 1) / 9)",
+      "as": "grid_row"
+    },
+    {
+      "calculate": "round(datum.participants / 2000)",
+      "as": "filled_units"
+    },
+    {
+      "calculate": "datum.unit <= datum.filled_units ? 'Participants' : 'Scale remainder'",
+      "as": "unit_status"
     }
   ],
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": null,
-      "sort": "ascending",
-      "axis": {
-        "labelAngle": 0,
-        "labelFontSize": 13,
-        "labelFontWeight": "bold",
+  "facet": {
+    "column": {
+      "field": "year_label",
+      "type": "nominal",
+      "sort": [
+        "2023: 60,598 people",
+        "2024: 57,000+ people",
+        "2025: 63,990 people"
+      ],
+      "header": {
+        "title": null,
+        "labelOrient": "bottom",
         "labelPadding": 10,
-        "tickSize": 0,
-        "domain": false
+        "labelFont": "Source Sans 3",
+        "labelFontSize": 12,
+        "labelFontWeight": "bold",
+        "labelColor": "#34443A"
       }
-    },
-    "y": {
-      "field": "participants",
-      "type": "quantitative",
-      "title": "Participants",
-      "scale": {
-        "domain": [
-          0,
-          70000
+    }
+  },
+  "spacing": 18,
+  "spec": {
+    "width": 135,
+    "height": 82,
+    "layer": [
+      {
+        "mark": {
+          "type": "square",
+          "size": 135,
+          "cornerRadius": 2,
+          "color": "#DDE7DC"
+        },
+        "encoding": {
+          "x": {
+            "field": "grid_column",
+            "type": "ordinal",
+            "axis": null
+          },
+          "y": {
+            "field": "grid_row",
+            "type": "ordinal",
+            "sort": "descending",
+            "axis": null
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.unit_status === 'Participants'"
+          }
         ],
-        "nice": false
-      },
-      "axis": {
-        "values": [
-          0,
-          10000,
-          20000,
-          30000,
-          40000,
-          50000,
-          60000,
-          70000
-        ],
-        "labelExpr": "datum.value === 0 ? '0' : datum.value / 1000 + 'k'",
-        "grid": true,
-        "gridColor": "#DDE5DF",
-        "gridWidth": 1,
-        "tickSize": 0,
-        "domain": false,
-        "titlePadding": 12
-      }
-    },
-    "tooltip": [
-      {
-        "field": "year",
-        "type": "ordinal",
-        "title": "Aussie Bird Count year"
-      },
-      {
-        "field": "participant_label",
-        "type": "nominal",
-        "title": "Participants"
-      },
-      {
-        "field": "birds_counted",
-        "type": "quantitative",
-        "title": "Birds counted",
-        "format": ","
-      },
-      {
-        "field": "species_recorded",
-        "type": "quantitative",
-        "title": "Species recorded",
-        "format": ","
-      },
-      {
-        "field": "checklists_submitted",
-        "type": "quantitative",
-        "title": "Checklists submitted",
-        "format": ","
-      },
-      {
-        "field": "top_species_nationally",
-        "type": "nominal",
-        "title": "Most counted species"
-      },
-      {
-        "field": "source_status",
-        "type": "nominal",
-        "title": "Source"
+        "mark": {
+          "type": "square",
+          "size": 135,
+          "cornerRadius": 2,
+          "color": "#3E7856"
+        },
+        "encoding": {
+          "x": {
+            "field": "grid_column",
+            "type": "ordinal",
+            "axis": null
+          },
+          "y": {
+            "field": "grid_row",
+            "type": "ordinal",
+            "sort": "descending",
+            "axis": null
+          },
+          "tooltip": [
+            {
+              "field": "year",
+              "type": "ordinal",
+              "title": "Year"
+            },
+            {
+              "field": "participant_label",
+              "type": "nominal",
+              "title": "Reported participants"
+            },
+            {
+              "value": "≈ 2,000 participants",
+              "title": "Each filled square"
+            }
+          ]
+        }
       }
     ]
   },
-  "layer": [
-    {
-      "mark": {
-        "type": "rule",
-        "strokeWidth": 5,
-        "strokeCap": "round"
-      },
-      "encoding": {
-        "y2": {
-          "datum": 0
-        },
-        "color": {
-          "condition": {
-            "test": "datum.year === 2025",
-            "value": "#3E7856"
-          },
-          "value": "#9ABB94"
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "circle",
-        "size": 750,
-        "stroke": "#FFFEF8",
-        "strokeWidth": 3
-      },
-      "encoding": {
-        "color": {
-          "condition": {
-            "test": "datum.year === 2025",
-            "value": "#3E7856"
-          },
-          "value": "#9ABB94"
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "dy": -28,
-        "fontSize": 15,
-        "fontWeight": "bold",
-        "color": "#26372E"
-      },
-      "encoding": {
-        "text": {
-          "field": "participant_label",
-          "type": "nominal"
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "dy": 29,
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "color": "#5F6B63"
-      },
-      "encoding": {
-        "text": {
-          "field": "birds_counted_label",
-          "type": "nominal"
-        }
-      }
-    },
-    {
-      "transform": [
-        {
-          "filter": "datum.year === 2025"
-        }
-      ],
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "bottom",
-        "dy": -58,
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "color": "#3E7856"
-      },
-      "encoding": {
-        "text": {
-          "value": "Highest confirmed participation"
-        }
-      }
-    }
-  ],
   "config": {
     "background": "#FFFEF8",
-    "font": "Arial",
+    "font": "Source Sans 3",
     "view": {
       "stroke": null
     },
+    "header": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
     "axis": {
-      "labelColor": "#34443A",
-      "titleColor": "#34443A",
-      "titleFontWeight": "normal",
-      "labelFontSize": 11,
-      "titleFontSize": 12
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "legend": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
     }
   }
 }

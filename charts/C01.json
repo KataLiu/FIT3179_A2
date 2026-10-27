@@ -7,10 +7,13 @@
       "Records indicate observation activity, not bird abundance."
     ],
     "anchor": "start",
-    "fontSize": 21,
-    "subtitleFontSize": 12,
+    "fontSize": 22,
+    "subtitleFontSize": 13,
     "subtitleColor": "#5F6B63",
-    "offset": 16
+    "offset": 16,
+    "font": "Fraunces",
+    "subtitleFont": "Source Sans 3",
+    "subtitleLineHeight": 17
   },
   "width": 760,
   "height": 450,
@@ -58,7 +61,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/Australia_States_ASGS2021_Simplified.topojson",
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/Australia_States_ASGS2021_Simplified.topojson",
         "format": {
           "type": "topojson",
           "feature": "australia_states"
@@ -73,7 +76,7 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
         "format": {
           "type": "csv",
           "parse": {
@@ -169,7 +172,7 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
         "format": {
           "type": "csv",
           "parse": {
@@ -208,7 +211,7 @@
     }
   ],
   "config": {
-    "font": "Arial",
+    "font": "Source Sans 3",
     "view": {
       "stroke": null
     },
@@ -216,7 +219,23 @@
       "labelColor": "#34443A",
       "titleColor": "#34443A",
       "symbolFillColor": "#3E7856",
-      "padding": 10
+      "padding": 10,
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "header": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
     }
   }
 }

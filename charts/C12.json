@@ -7,15 +7,18 @@
       "The circles preserve approximate geographic positions, but state area is replaced by reporting activity."
     ],
     "anchor": "start",
-    "fontSize": 20,
-    "subtitleFontSize": 12,
+    "fontSize": 22,
+    "subtitleFontSize": 13,
     "subtitleColor": "#5F6B63",
-    "offset": 18
+    "offset": 18,
+    "font": "Fraunces",
+    "subtitleFont": "Source Sans 3",
+    "subtitleLineHeight": 17
   },
   "width": 700,
   "height": 430,
   "data": {
-    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C12_DorlingCartogram_2024.csv",
+    "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C12_DorlingCartogram_2024.csv",
     "format": {
       "type": "csv",
       "parse": {
@@ -222,7 +225,7 @@
       "mark": {
         "type": "text",
         "dy": 10,
-        "fontSize": 10,
+        "fontSize": 11,
         "fontWeight": "bold",
         "baseline": "middle"
       },
@@ -268,13 +271,29 @@
   ],
   "config": {
     "background": "#FFFEF8",
-    "font": "Arial",
+    "font": "Source Sans 3",
     "view": {
       "stroke": null
     },
     "legend": {
       "labelColor": "#34443A",
-      "titleColor": "#34443A"
+      "titleColor": "#34443A",
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "header": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
     }
   }
 }

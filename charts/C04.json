@@ -3,14 +3,17 @@
   "title": {
     "text": "Where are selected birds reported?",
     "subtitle": [
-      "Each point is a verified location from matched, stratified samples collected between 2018 and 2024.",
-      "Point density shows the sample locations, not bird abundance."
+      "Choose one species or compare all three; colour identifies species when they appear together.",
+      "Points are verified sample locations from 2018–2024 and do not measure bird abundance."
     ],
     "anchor": "start",
-    "fontSize": 21,
-    "subtitleFontSize": 12,
+    "fontSize": 22,
+    "subtitleFontSize": 13,
     "subtitleColor": "#5F6B63",
-    "offset": 16
+    "offset": 16,
+    "font": "Fraunces",
+    "subtitleFont": "Source Sans 3",
+    "subtitleLineHeight": 17
   },
   "width": 760,
   "height": 450,
@@ -55,7 +58,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/Australia_States_ASGS2021_Simplified.topojson",
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/Australia_States_ASGS2021_Simplified.topojson",
         "format": {
           "type": "topojson",
           "feature": "australia_states"
@@ -70,7 +73,7 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2/refs/heads/main/data/C04_HeroSpeciesSampleLocations_2018_2024.csv",
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C04_HeroSpeciesSampleLocations_2018_2024.csv",
         "format": {
           "type": "csv",
           "parse": {
@@ -126,7 +129,9 @@
             "orient": "top",
             "direction": "horizontal",
             "symbolType": "circle",
-            "symbolSize": 110
+            "symbolSize": 110,
+            "labelFontSize": 12,
+            "titleFontSize": 13
           }
         },
         "tooltip": [
@@ -160,14 +165,30 @@
     }
   ],
   "config": {
-    "font": "Arial",
+    "font": "Source Sans 3",
     "view": {
       "stroke": null
     },
     "legend": {
       "labelColor": "#34443A",
       "titleColor": "#34443A",
-      "padding": 8
+      "padding": 8,
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "axis": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
+    },
+    "header": {
+      "labelFont": "Source Sans 3",
+      "titleFont": "Source Sans 3",
+      "labelFontSize": 12,
+      "titleFontSize": 13
     }
   }
 }
