@@ -78,7 +78,8 @@
         "labelPadding": 9,
         "tickSize": 0,
         "domain": false,
-        "grid": false
+        "grid": false,
+        "labelFlush": false
       }
     },
     "y": {
