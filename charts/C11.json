@@ -78,8 +78,8 @@
   },
   "spacing": 14,
   "spec": {
-    "width": 135,
-    "height": 245,
+    "width": 235,
+    "height": 260,
     "layer": [
       {
         "mark": {
@@ -168,7 +168,7 @@
         },
         "encoding": {
           "x": {
-            "value": 80
+            "value": 118
           },
           "y": {
             "value": 35
@@ -189,7 +189,7 @@
         },
         "encoding": {
           "x": {
-            "value": 80
+            "value": 118
           },
           "y": {
             "value": 92
@@ -210,7 +210,7 @@
         },
         "encoding": {
           "x": {
-            "value": 80
+            "value": 118
           },
           "y": {
             "value": 130
@@ -230,7 +230,7 @@
         },
         "encoding": {
           "x": {
-            "value": 80
+            "value": 118
           },
           "y": {
             "value": 174

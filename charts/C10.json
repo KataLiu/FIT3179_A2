@@ -81,13 +81,13 @@
   },
   "spacing": 18,
   "spec": {
-    "width": 155,
-    "height": 145,
+    "width": 270,
+    "height": 165,
     "layer": [
       {
         "mark": {
           "type": "square",
-          "size": 135,
+          "size": 210,
           "cornerRadius": 2,
           "color": "#DDE7DC"
         },
@@ -113,7 +113,7 @@
         ],
         "mark": {
           "type": "square",
-          "size": 135,
+          "size": 210,
           "cornerRadius": 2,
           "color": "#3E7856"
         },

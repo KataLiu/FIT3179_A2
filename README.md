@@ -48,4 +48,4 @@ Data were accessed on 2 October 2026. Full processing notes and chart-specific l
 
 Visualisation and analysis by **Hanjia Liu**, October 2026.
 
-Generative AI tools, including Claude and OpenAI Codex/ChatGPT, were used for development feedback, code assistance and language refinement. The decorative magpie and lorikeet illustrations were generated with OpenAI image generation. The author checked the data, sources, calculations and final design.
+Generative AI tools, including Claude and OpenAI Codex/ChatGPT, were used for development feedback, code assistance and language refinement. The decorative magpie, lorikeet, kookaburra and fairywren illustrations were generated with OpenAI image generation, and each illustration appears once. The author checked the data, sources, calculations and final design.
