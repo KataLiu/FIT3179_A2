@@ -243,6 +243,45 @@
           "type": "nominal"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2020.9,
+            "record_rank": 2.5,
+            "label": "NSW held 3rd for six years, then rose to 2nd in 2024 \u2192"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Source Sans 3",
+        "fontSize": 12.5,
+        "fontWeight": 600,
+        "color": "#7A5A12",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "record_rank",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        },
+        "color": {
+          "value": "#7A5A12"
+        },
+        "opacity": {
+          "value": 1
+        },
+        "tooltip": null
+      }
     }
   ],
   "config": {

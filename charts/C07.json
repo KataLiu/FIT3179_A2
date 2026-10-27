@@ -156,6 +156,35 @@
       }
     },
     {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "birdata_share",
+              "as": "max_share"
+            }
+          ]
+        },
+        {
+          "filter": "datum.birdata_share === datum.max_share"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "#7A5A12",
+        "strokeWidth": 2,
+        "strokeJoin": "round"
+      },
+      "encoding": {
+        "shape": {
+          "field": "state_geometry",
+          "type": "geojson"
+        }
+      }
+    },
+    {
       "mark": {
         "type": "text",
         "fontSize": 11,
@@ -211,6 +240,45 @@
             "format": ","
           }
         ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "birdata_share",
+              "as": "max_share"
+            }
+          ]
+        },
+        {
+          "filter": "datum.birdata_share === datum.max_share"
+        },
+        {
+          "calculate": "'Highest Birdata share in ' + datum.year + ': ' + datum.state + ' (' + format(datum.birdata_share, '.1%') + ')'",
+          "as": "note"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Source Sans 3",
+        "fontSize": 13,
+        "fontWeight": 600,
+        "color": "#7A5A12",
+        "align": "left"
+      },
+      "encoding": {
+        "x": {
+          "value": 10
+        },
+        "y": {
+          "value": 548
+        },
+        "text": {
+          "field": "note"
+        }
       }
     }
   ],

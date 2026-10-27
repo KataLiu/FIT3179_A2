@@ -258,6 +258,46 @@
           "value": "#26372E"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "dorling_x": 38,
+            "dorling_y": 63,
+            "note": [
+              "South Australia: few records, but the",
+              "highest Birdata share (26.1%) \u2197"
+            ]
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Source Sans 3",
+        "fontSize": 13,
+        "fontWeight": 600,
+        "color": "#7A5A12",
+        "align": "right",
+        "baseline": "top",
+        "lineHeight": 18
+      },
+      "encoding": {
+        "x": {
+          "field": "dorling_x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "dorling_y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note"
+        },
+        "color": {
+          "value": "#7A5A12"
+        }
+      }
     }
   ],
   "config": {

@@ -196,6 +196,125 @@
           "type": "nominal"
         }
       }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "longitude": "number",
+            "latitude": "number",
+            "ebird_records": "number",
+            "birdata_records": "number",
+            "total_records": "number",
+            "birdata_share": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.year === year_select"
+        },
+        {
+          "calculate": "source_select === 'eBird Australia' ? datum.ebird_records : source_select === 'BirdLife Birdata' ? datum.birdata_records : datum.total_records",
+          "as": "selected_records"
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "selected_records",
+              "as": "max_records"
+            }
+          ]
+        },
+        {
+          "filter": "datum.selected_records === datum.max_records"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "fill": null,
+        "stroke": "#7A5A12",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "selected_records",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KataLiu/FIT3179_A2_BirdWatching/refs/heads/main/data/C01_C07_C09_StateMetrics_2018_2024.csv",
+        "format": {
+          "type": "csv",
+          "parse": {
+            "year": "number",
+            "longitude": "number",
+            "latitude": "number",
+            "ebird_records": "number",
+            "birdata_records": "number",
+            "total_records": "number",
+            "birdata_share": "number"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.year === year_select"
+        },
+        {
+          "calculate": "source_select === 'eBird Australia' ? datum.ebird_records : source_select === 'BirdLife Birdata' ? datum.birdata_records : datum.total_records",
+          "as": "selected_records"
+        },
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "selected_records",
+              "as": "max_records"
+            }
+          ]
+        },
+        {
+          "filter": "datum.selected_records === datum.max_records"
+        },
+        {
+          "calculate": "'Most records in ' + datum.year + ': ' + datum.state + ' (' + (datum.selected_records >= 1000000 ? format(datum.selected_records / 1000000, '.2f') + 'M' : format(datum.selected_records / 1000, '.0f') + 'k') + ')'",
+          "as": "note"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Source Sans 3",
+        "fontSize": 13,
+        "fontWeight": 600,
+        "color": "#7A5A12",
+        "align": "left"
+      },
+      "encoding": {
+        "x": {
+          "value": 14
+        },
+        "y": {
+          "value": 548
+        },
+        "text": {
+          "field": "note"
+        }
+      }
     }
   ],
   "config": {

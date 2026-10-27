@@ -13,89 +13,132 @@
       }
     }
   },
-  "mark": {
-    "type": "line",
-    "point": {
-      "filled": true,
-      "size": 70
-    },
-    "strokeWidth": 3
-  },
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": null,
-      "axis": {
-        "labelAngle": 0,
-        "labelPadding": 8,
-        "tickSize": 0,
-        "domain": false
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": {
+          "filled": true,
+          "size": 70
+        },
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "labelAngle": 0,
+            "labelPadding": 8,
+            "tickSize": 0,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "records_millions",
+          "type": "quantitative",
+          "title": "Records (millions)",
+          "scale": {
+            "domain": [
+              0,
+              9
+            ]
+          },
+          "axis": {
+            "grid": true,
+            "gridColor": "#DCE4DF",
+            "gridOpacity": 1,
+            "domain": false,
+            "tickCount": 5,
+            "labelExpr": "datum.value + 'M'"
+          }
+        },
+        "color": {
+          "field": "source",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": [
+              "eBird Australia",
+              "BirdLife Birdata"
+            ],
+            "range": [
+              "#3E7856",
+              "#E89A32"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "direction": "horizontal",
+            "symbolType": "circle",
+            "symbolSize": 160,
+            "labelFontSize": 12,
+            "offset": 8,
+            "labelExpr": "datum.label === 'eBird Australia' ? 'eBird' : 'Birdata'",
+            "labelLimit": 100
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "source",
+            "type": "nominal",
+            "title": "Citizen-science source"
+          },
+          {
+            "field": "exact_count",
+            "type": "quantitative",
+            "title": "Records",
+            "format": ","
+          }
+        ]
       }
     },
-    "y": {
-      "field": "records_millions",
-      "type": "quantitative",
-      "title": "Records (millions)",
-      "scale": {
-        "domain": [
-          0,
-          9
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2024,
+            "records_millions": 8.726849,
+            "label": "+136% since 2018"
+          },
+          {
+            "year": 2024,
+            "records_millions": 0.962514,
+            "label": "+32% since 2018"
+          }
         ]
       },
-      "axis": {
-        "grid": true,
-        "gridColor": "#DCE4DF",
-        "gridOpacity": 1,
-        "domain": false,
-        "tickCount": 5,
-        "labelExpr": "datum.value + 'M'"
-      }
-    },
-    "color": {
-      "field": "source",
-      "type": "nominal",
-      "title": null,
-      "scale": {
-        "domain": [
-          "eBird Australia",
-          "BirdLife Birdata"
-        ],
-        "range": [
-          "#3E7856",
-          "#E89A32"
-        ]
+      "mark": {
+        "type": "text",
+        "font": "Source Sans 3",
+        "fontSize": 12.5,
+        "fontWeight": 600,
+        "color": "#7A5A12",
+        "align": "right",
+        "dx": -12,
+        "dy": -16
       },
-      "legend": {
-        "orient": "top",
-        "direction": "horizontal",
-        "symbolType": "circle",
-        "symbolSize": 160,
-        "labelFontSize": 12,
-        "offset": 8,
-        "labelExpr": "datum.label === 'eBird Australia' ? 'eBird' : 'Birdata'",
-        "labelLimit": 100
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "records_millions",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
       }
-    },
-    "tooltip": [
-      {
-        "field": "year",
-        "type": "ordinal",
-        "title": "Year"
-      },
-      {
-        "field": "source",
-        "type": "nominal",
-        "title": "Citizen-science source"
-      },
-      {
-        "field": "exact_count",
-        "type": "quantitative",
-        "title": "Records",
-        "format": ","
-      }
-    ]
-  },
+    }
+  ],
   "config": {
     "background": "#FFFEF8",
     "font": "Source Sans 3",

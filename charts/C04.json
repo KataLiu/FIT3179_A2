@@ -150,6 +150,40 @@
           }
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          {}
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "[species_select === 'Laughing Kookaburra' ? 'No Laughing Kookaburra records come from the Northern Territory.' : species_select === 'Rainbow Lorikeet' ? 'Rainbow Lorikeets are rarely reported in the Northern Territory.' : species_select === 'Australian Magpie' ? 'Australian Magpies are reported in every state and territory.' : 'Magpies appear everywhere; Kookaburras are absent from the NT sample.', 'Each state contributes up to ' + (source_select === 'Both sources' ? '280' : '140') + ' points per species, so density shows sampling, not abundance.']",
+          "as": "note"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Source Sans 3",
+        "fontSize": 13,
+        "fontWeight": 600,
+        "color": "#7A5A12",
+        "align": "left",
+        "baseline": "bottom",
+        "lineHeight": 18
+      },
+      "encoding": {
+        "x": {
+          "value": 14
+        },
+        "y": {
+          "value": 550
+        },
+        "text": {
+          "field": "note"
+        }
+      }
     }
   ],
   "config": {

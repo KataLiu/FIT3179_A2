@@ -50,91 +50,198 @@
       ]
     }
   ],
-  "mark": {
-    "type": "rect",
-    "cornerRadius": 3,
-    "stroke": "#FFFEF8",
-    "strokeWidth": 2
-  },
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "ordinal",
-      "title": null,
-      "axis": {
-        "labelAngle": 0,
-        "labelPadding": 8,
-        "tickSize": 0,
-        "domain": false
-      }
-    },
-    "y": {
-      "field": "month_name",
-      "type": "ordinal",
-      "title": null,
-      "sort": [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ],
-      "axis": {
-        "labelPadding": 8,
-        "tickSize": 0,
-        "domain": false
-      }
-    },
-    "color": {
-      "field": "records",
-      "type": "quantitative",
-      "title": "Number of records",
-      "scale": {
-        "range": [
-          "#F2F7EE",
-          "#DCEBD5",
-          "#B9D8AE",
-          "#82B77D",
-          "#4B8F5A",
-          "#1F5D3B"
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 3,
+        "stroke": "#FFFEF8",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "labelAngle": 0,
+            "labelPadding": 8,
+            "tickSize": 0,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "month_name",
+          "type": "ordinal",
+          "title": null,
+          "sort": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ],
+          "axis": {
+            "labelPadding": 8,
+            "tickSize": 0,
+            "domain": false
+          }
+        },
+        "color": {
+          "field": "records",
+          "type": "quantitative",
+          "title": "Number of records",
+          "scale": {
+            "range": [
+              "#F2F7EE",
+              "#DCEBD5",
+              "#B9D8AE",
+              "#82B77D",
+              "#4B8F5A",
+              "#1F5D3B"
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "format": "~s",
+            "gradientLength": 260,
+            "titleFontWeight": "normal",
+            "title": "Records",
+            "titleLimit": 120,
+            "labelLimit": 80
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "month_name",
+            "type": "ordinal",
+            "title": "Month"
+          },
+          {
+            "field": "records",
+            "type": "quantitative",
+            "title": "Records",
+            "format": ","
+          }
         ]
-      },
-      "legend": {
-        "orient": "right",
-        "format": "~s",
-        "gradientLength": 260,
-        "titleFontWeight": "normal",
-        "title": "Records",
-        "titleLimit": 120,
-        "labelLimit": 80
       }
     },
-    "tooltip": [
-      {
-        "field": "year",
-        "type": "ordinal",
-        "title": "Year"
+    {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "records",
+              "as": "max_records"
+            }
+          ]
+        },
+        {
+          "filter": "datum.records === datum.max_records"
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "fill": null,
+        "stroke": "#7A5A12",
+        "strokeWidth": 2.5,
+        "cornerRadius": 3
       },
-      {
-        "field": "month_name",
-        "type": "ordinal",
-        "title": "Month"
-      },
-      {
-        "field": "records",
-        "type": "quantitative",
-        "title": "Records",
-        "format": ","
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "month_name",
+          "type": "ordinal",
+          "sort": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ]
+        }
       }
-    ]
-  },
+    },
+    {
+      "transform": [
+        {
+          "joinaggregate": [
+            {
+              "op": "max",
+              "field": "records",
+              "as": "max_records"
+            }
+          ]
+        },
+        {
+          "filter": "datum.records === datum.max_records"
+        },
+        {
+          "calculate": "['Peak', format(datum.records, '.3~s')]",
+          "as": "peak_label"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "font": "Source Sans 3",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "color": "#FFFFFF",
+        "lineHeight": 12,
+        "baseline": "middle"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "month_name",
+          "type": "ordinal",
+          "sort": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ]
+        },
+        "text": {
+          "field": "peak_label"
+        }
+      }
+    }
+  ],
   "config": {
     "font": "Source Sans 3",
     "view": {
