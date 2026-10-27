@@ -4,12 +4,20 @@
   "height": 570,
   "background": "#FFFEF8",
   "projection": {
-    "type": "mercator",
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -133,
+      0
+    ],
     "center": [
-      134,
+      0,
       -27.5
     ],
-    "scale": 800
+    "scale": 860
   },
   "params": [
     {
