@@ -8,6 +8,9 @@
   --line: #d8ded5;
   --gold: #d9a33a;
   --shadow: 0 12px 32px rgba(48, 65, 53, 0.08);
+  --card-pad: 1.75rem;
+  /* Where text inside a chart card starts: card padding plus its 1px border. */
+  --card-inset: calc(var(--card-pad) + 1px);
 }
 
 * {
@@ -168,6 +171,7 @@ main {
   gap: 1.35rem;
   align-items: center;
   margin: 0 0 2rem;
+  padding-inline: var(--card-inset);
 }
 
 .section-bird {
@@ -216,12 +220,11 @@ main {
 
 .section-insight {
   display: grid;
-  width: min(840px, calc(100% - 6rem));
-  grid-template-columns: 7.5rem minmax(0, 58ch);
-  gap: 1rem;
+  grid-template-columns: 4.8rem minmax(0, 58ch);
+  gap: 1.35rem;
   align-items: start;
-  margin: -0.35rem 0 1.75rem 6rem;
-  padding: 1rem 1.15rem;
+  margin: -0.35rem 0 1.75rem;
+  padding: 1.1rem var(--card-inset) 1.1rem calc(var(--card-inset) - 4px);
   border-left: 4px solid var(--gold);
   border-radius: 0 0.8rem 0.8rem 0;
   background: rgba(255, 249, 232, 0.76);
@@ -251,7 +254,7 @@ main {
 
 .chart-card {
   min-width: 0;
-  padding: 1.6rem 1.75rem 1.5rem;
+  padding: 1.6rem var(--card-pad) 1.5rem;
   overflow: hidden;
   border: 1px solid rgba(62, 120, 86, 0.14);
   border-radius: 1.15rem;
@@ -303,9 +306,54 @@ main {
  * Charts render at the pixel size declared in each JSON specification, so
  * every chart shares the same text sizes. They only shrink on narrow screens.
  */
+/* Chart controls sit above the chart, aligned with the chart heading. */
 .chart-host .vega-bindings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  order: -1;
   width: 100%;
-  margin-inline: auto;
+  margin: 0 0 1.1rem;
+}
+
+.chart-host .vega-bindings:empty {
+  display: none;
+}
+
+.chart-host .vega-bind label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.chart-host .vega-bind-name {
+  color: var(--muted);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.chart-host .vega-bind select {
+  appearance: none;
+  padding: 0.38rem 2.3rem 0.38rem 0.95rem;
+  border: 1px solid rgba(62, 120, 86, 0.35);
+  border-radius: 999px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%233e7856' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      no-repeat right 0.9rem center,
+    var(--green-soft);
+  color: var(--ink);
+  font: 600 1.0625rem/1.3 "Source Sans 3", "Avenir Next", Avenir, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.chart-host .vega-bind select:hover {
+  border-color: var(--green);
+}
+
+.chart-host .vega-bind select:focus-visible {
+  outline: 3px solid rgba(62, 120, 86, 0.35);
+  outline-offset: 2px;
+  border-color: var(--green);
 }
 
 .chart-error {
@@ -322,7 +370,7 @@ main {
   gap: 1.1rem;
   align-items: start;
   margin-top: 1.5rem;
-  padding: 1.5rem;
+  padding: 1.5rem calc(var(--card-inset) - 1px);
   border: 1px solid rgba(217, 163, 58, 0.35);
   border-radius: 1rem;
   background: #fff9e8;
@@ -461,11 +509,13 @@ main {
   .section-insight {
     grid-template-columns: 1fr;
     gap: 0.35rem;
-    margin-left: 0;
+  }
+
+  :root {
+    --card-pad: 0.55rem;
   }
 
   .chart-card {
-    padding: 0.55rem;
     border-radius: 0.85rem;
   }
 
